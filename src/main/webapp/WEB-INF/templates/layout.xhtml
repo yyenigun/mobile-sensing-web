@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Peralab Mobile Sensing Web Project</title>
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" size="100" resizable="false" closable="false"
+			collapsible="false">
+			<h:form>
+				<p:growl id="messages" />
+
+				<p:menubar>
+					<f:facet name="options">
+						<p:inputText style="margin-right:10px" placeholder="Search" />
+						<p:commandButton type="button" value="Logout"
+							icon="ui-icon-extlink" />
+					</f:facet>
+				</p:menubar>
+			</h:form>
+
+		</p:layoutUnit>
+
+		<p:layoutUnit position="south" size="40">
+			<h:outputText value="www.gsu.edu.tr" />
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<ui:insert name="content">Peralab Test</ui:insert>
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+</html>

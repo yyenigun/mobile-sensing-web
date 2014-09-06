@@ -1,4 +1,4 @@
-jsf-primefaces-spring-example
+mobile-sensing-web
 =============================
 
-A bootstrap projet to have JSF, Primefaces and spring in a project build with gradle for Eclispe (or STS)
+This is an academic web application of Galatasaray University Peralab for monitoring mobile phone's sensor data. 

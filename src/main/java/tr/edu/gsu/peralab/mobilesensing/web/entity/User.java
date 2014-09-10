@@ -21,27 +21,27 @@ public class User implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long userId;
-	
+
 	private String userName;
-	
+
 	private String lastName;
-	
+
 	private String password;
-	
+
 	private int age;
-	
+
 	private int weight;
-	
+
 	private int height;
-	
+
 	private String gender;
-	
+
 	private int rights;
-	
+
 	private int conInterval;
-	
+
 	private int popupInterval;
-	
+
 	private int isOnline;
 
 	private int isForceRestart;
@@ -149,14 +149,5 @@ public class User implements java.io.Serializable {
 	public void setIsForceRestart(int isForceRestart) {
 		this.isForceRestart = isForceRestart;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
-	

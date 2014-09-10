@@ -29,7 +29,7 @@ import tr.edu.gsu.peralab.mobilesensing.web.service.UserService;
 @Named
 @ViewScoped
 public class UserView implements Serializable {
-
+	
 	private User user;
 
 	@Inject
@@ -39,10 +39,6 @@ public class UserView implements Serializable {
 		super();
 	}
 
-	@PostConstruct
-	public void init() {
-		user = userService.findUser(user.getUserName(), user.getPassword());
-	}
 
 	public User getUser() {
 		return user;

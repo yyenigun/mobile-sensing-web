@@ -41,7 +41,7 @@ public class UserView implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		user = userService.findUser();
+		user = userService.findUser(user.getUserName(), user.getPassword());
 	}
 
 	public User getUser() {

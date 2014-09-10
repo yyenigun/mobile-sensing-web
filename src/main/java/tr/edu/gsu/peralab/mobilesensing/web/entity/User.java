@@ -16,17 +16,35 @@
 
 package tr.edu.gsu.peralab.mobilesensing.web.entity;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
 public class User implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	private Long userId;
-	private String login;
-	private String password;
-	private String firstName;
+	
+	private String userName;
+	
 	private String lastName;
+	
+	private String password;
+	
+	private int age;
+	
+	private int weight;
+	
+	private int height;
+	
+	private String gender;
+	
+	private int rights;
+	
+	private int conInterval;
+	
+	private int popupInterval;
+	
+	private int isOnline;
+
+	private int isForceRestart;
 
 	public Long getUserId() {
 		return userId;
@@ -36,28 +54,12 @@ public class User implements java.io.Serializable {
 		this.userId = userId;
 	}
 
-	public String getLogin() {
-		return login;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getLastName() {
@@ -68,25 +70,93 @@ public class User implements java.io.Serializable {
 		this.lastName = lastName;
 	}
 
-	@Override
-	public int hashCode() {
-		return new HashCodeBuilder().append(userId).toHashCode();
+	public String getPassword() {
+		return password;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!(obj instanceof User))
-			return false;
-		return new EqualsBuilder().append(userId, ((User) obj).getUserId())
-				.isEquals();
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	@Override
-	public String toString() {
-		return new ToStringBuilder(this).append(userId).append(login)
-				.toString();
+	public int getAge() {
+		return age;
 	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public int getRights() {
+		return rights;
+	}
+
+	public void setRights(int rights) {
+		this.rights = rights;
+	}
+
+	public int getConInterval() {
+		return conInterval;
+	}
+
+	public void setConInterval(int conInterval) {
+		this.conInterval = conInterval;
+	}
+
+	public int getPopupInterval() {
+		return popupInterval;
+	}
+
+	public void setPopupInterval(int popupInterval) {
+		this.popupInterval = popupInterval;
+	}
+
+	public int getIsOnline() {
+		return isOnline;
+	}
+
+	public void setIsOnline(int isOnline) {
+		this.isOnline = isOnline;
+	}
+
+	public int getIsForceRestart() {
+		return isForceRestart;
+	}
+
+	public void setIsForceRestart(int isForceRestart) {
+		this.isForceRestart = isForceRestart;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
+	

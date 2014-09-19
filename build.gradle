@@ -3,10 +3,10 @@ apply plugin: 'war'
 apply plugin: 'eclipse'
 apply plugin: 'eclipse-wtp'
 
-sourceCompatibility = '1.7'
-targetCompatibility = '1.7'
+sourceCompatibility = '1.6'
+targetCompatibility = '1.6'
 
-def springVersion = '4.1.0.RELEASE'
+def springVersion = '3.2.5.RELEASE'
 def jsfApi = '2.2.5'
 def primefaces = '4.0'
 
@@ -24,13 +24,13 @@ eclipse {
 	}
 	wtp {
 		facet {
-		  facet name: 'jst.web', version: '3.0'
-		  facet name: 'java', version: '1.7'
+		  facet name: 'jst.web', version: '2.5'
+		  facet name: 'java', version: '1.6'
 		}
 	}
 	jdt {
-		sourceCompatibility = 1.7
-		targetCompatibility = 1.7
+		sourceCompatibility = 1.6
+		targetCompatibility = 1.6
 	}
 }
 
@@ -43,15 +43,16 @@ repositories {
 }
 
 dependencies {
-	providedCompile 'javax.servlet:servlet-api:2.5'
-	compile "com.sun.faces:jsf-api:$jsfApi"
-	compile "com.sun.faces:jsf-impl:$jsfApi"
-	compile "org.primefaces:primefaces:$primefaces"
-	compile "org.primefaces.themes:bootstrap:1.0.10"
 	compile "org.springframework:spring-core:$springVersion"
 	compile "org.springframework:spring-context:$springVersion"
 	compile "org.springframework:spring-webmvc:$springVersion"
 	compile "org.springframework:spring-jdbc:$springVersion"
+	compile "org.springframework.security:spring-security-core:3.2.5.RELEASE"
+	compile "org.springframework.security:spring-security-web:3.2.5.RELEASE"
+	compile "org.springframework.security:spring-security-config:3.2.5.RELEASE"
 	compile 'org.apache.commons:commons-lang3:3.2.1'
 	compile 'javax.inject:javax.inject:1'
+	providedCompile 'javax.servlet:servlet-api:2.5'
+	providedCompile 'javax.servlet.jsp:jsp-api:2.1'
+	compile 'jstl:jstl:1.2'
 }

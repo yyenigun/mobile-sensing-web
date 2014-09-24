@@ -43,23 +43,24 @@
 		<!-- Left side column. contains the logo and sidebar -->
 		<aside class="left-side sidebar-offcanvas">
 			<!-- sidebar: style can be found in sidebar.less -->
-						<section class="sidebar">
+			<section class="sidebar">
 
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu">
 					<li><a href="index.jsp"> <i class="fa fa-dashboard"></i> <span>Ana
 								Sayfa</span>
 					</a></li>
-					<li><a href="publications.jsp"><i
-							class="fa fa-folder"></i> <span>Yayınlar</span> </a></li>
-					<li class="active"><a href="team.jsp"> <i class="fa fa-th"></i> <span>Ekip</span>
+					<li><a href="publications.jsp"><i class="fa fa-folder"></i> <span>Yayınlar</span>
 					</a></li>
-					<li><a href="events.jsp"> <i class="fa fa-laptop"></i> <span>Etkinlikler</span>
+					<li><a href="team.jsp"> <i class="fa fa-th"></i> <span>Ekip</span>
 					</a></li>
-					<li><a href="news.jsp"> <i class="fa fa-edit"></i> <span>Haberler</span>
+					<li><a href="events.jsp"> <i
+							class="fa fa-laptop"></i> <span>Etkinlikler</span>
 					</a></li>
-					<li><a href="links.jsp"> <i class="fa fa-table"></i>
-							<span>Bağlantılar</span>
+					<li  class="active"><a href="news.jsp"> <i class="fa fa-edit"></i> <span>Haberler</span>
+					</a></li>
+					<li><a href="links.jsp"> <i
+							class="fa fa-table"></i> <span>Bağlantılar</span>
 					</a></li>
 					<li><a href="contact.jsp"> <i class="fa fa-envelope"></i>
 							<span>İletişim</span>
@@ -77,40 +78,77 @@
 					Peralab <small>Galatasaray Üniversitesi</small>
 				</h1>
 				<ol class="breadcrumb">
-					<li><a href="index.jsp"><i class="fa fa-dashboard"></i> Ana Sayfa</a></li>
-					<li><a href="team.jsp">Ekip</a></li>
+					<li><a href="index.jsp"><i class="fa fa-dashboard"></i>
+							Ana Sayfa</a></li>
+					<li><a href="news.jsp">Haberler</a></li>
 				</ol>
 			</section>
 
 			<!-- Main content -->
 			<section class="content">
-				<h2 class="page-header">Ekip</h2>
-				<div class="row">
-					<div class="col-md-2">
-						<img src="http://www.assertid.com/images/team.png" />
-					</div>
-					<div class="col-md-10">
-						<div class="box-body">
-							<ul>
-
-								<li><a href="http://personel.gsu.edu.tr/ozlem-durmaz-incel-2">Yrd. Doç. Dr. Özlem Durmaz İncel</a></li>
-								<li><a href="http://personel.gsu.edu.tr/b-atay-ozgovde">Yrd. Doç. Dr. Bahri Atay Özgövde</a></li>
-								<li>Yüksek Lisans Öğrencisi Doruk Coşkun</li>
-								<li><a href="http://yalcinyenigun.com/">Yüksek Lisans Öğrencisi Yalçın Yenigün</a></li>
-								<li>Yüksek Lisans Öğrencisi Mehmet Aktaş</li>
-							</ul>
+				<div class="box box-solid">
+					<!-- /.box-header -->
+					<!-- Chat box -->
+					<div class="box box-success">
+						<div class="box-header">
+							<i class="fa fa-comments-o"></i>
+							<h3 class="box-title">Haberler</h3>
+							<div class="box-tools pull-right" data-toggle="tooltip"
+								title="Status">
+								<div class="btn-group" data-toggle="btn-toggle">
+									<button type="button" class="btn btn-default btn-sm active">
+										<i class="fa fa-square text-green"></i>
+									</button>
+									<button type="button" class="btn btn-default btn-sm">
+										<i class="fa fa-square text-red"></i>
+									</button>
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-				<!-- /. box -->
-			</section>
+						<div class="box-body chat" id="chat-box">
+							<!-- chat item -->
+							<div class="item">
+								<br /> <br />
+								<p class="message">
+									<a href="#" class="name"> <small
+										class="text-muted pull-right"><i class="fa fa-clock-o"></i>
+											24.11.2014 - 2:15</small> Haber 1
+									</a> I would like to meet you to discuss the latest news about the
+									arrival of the new theme. They say it is going to be one the
+									best themes on the market
+								</p>
+								<!-- /.attachment -->
+							</div>
+							<!-- /.item -->
+							<!-- chat item -->
+							<div class="item">
+								<br /> <br />
+								<p class="message">
+									<a href="#" class="name"> <small
+										class="text-muted pull-right"><i class="fa fa-clock-o"></i>
+											24.11.2014 - 2:15</small> Haber 1
+									</a> I would like to meet you to discuss the latest news about the
+									arrival of the new theme. They say it is going to be one the
+									best themes on the market
+								</p>
+								<!-- /.attachment -->
+							</div>
+							<!-- /.item -->
+						</div>
 
+					</div>
+					<!-- /.box (chat box) -->
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+			</section>
 			<!-- /.content -->
 		</aside>
-
 		<!-- /.right-side -->
 	</div>
 	<!-- ./wrapper -->
+
+
 	<!-- jQuery 2.0.2 -->
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
@@ -118,11 +156,5 @@
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<!-- AdminLTE App -->
 	<script src="js/AdminLTE/app.js" type="text/javascript"></script>
-
-	<script src="js/plugins/fullcalendar/fullcalendar.min.js"
-		type="text/javascript"></script>
-	<!-- Page specific script -->
-
-
 </body>
 </html>

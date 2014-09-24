@@ -43,25 +43,25 @@
 		<!-- Left side column. contains the logo and sidebar -->
 		<aside class="left-side sidebar-offcanvas">
 			<!-- sidebar: style can be found in sidebar.less -->
-			<section class="sidebar">
+						<section class="sidebar">
 
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu">
-					<li><a href="index.jsp"> <i
-							class="fa fa-dashboard"></i> <span>Ana Sayfa</span>
+					<li><a href="index.jsp"> <i class="fa fa-dashboard"></i> <span>Ana
+								Sayfa</span>
 					</a></li>
-					<li  class="active"><a href="index.jsp"><i class="fa fa-folder"></i> <span>Yayınlar</span>
-					</a></li>
+					<li   class="active"><a href="publications.jsp"><i
+							class="fa fa-folder"></i> <span>Yayınlar</span> </a></li>
 					<li><a href="team.jsp"> <i class="fa fa-th"></i> <span>Ekip</span>
 					</a></li>
 					<li><a href="events.jsp"> <i class="fa fa-laptop"></i> <span>Etkinlikler</span>
 					</a></li>
-					<li><a href="#"> <i class="fa fa-edit"></i> <span>Haberler</span>
+					<li><a href="news.jsp"> <i class="fa fa-edit"></i> <span>Haberler</span>
 					</a></li>
-					<li class="treeview"><a href="#"> <i class="fa fa-table"></i>
+					<li><a href="links.jsp"> <i class="fa fa-table"></i>
 							<span>Bağlantılar</span>
 					</a></li>
-					<li><a href="mailbox.html"> <i class="fa fa-envelope"></i>
+					<li><a href="contact.jsp"> <i class="fa fa-envelope"></i>
 							<span>İletişim</span>
 					</a></li>
 				</ul>

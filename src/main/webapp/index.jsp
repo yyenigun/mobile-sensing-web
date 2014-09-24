@@ -26,7 +26,7 @@
 <body class="skin-blue">
 	<!-- header logo: style can be found in header.less -->
 	<header class="header">
-		<a href="index.html" class="logo"> <!-- Add the class icon to your logo image or logo icon to add the margining -->
+		<a href="index.jsp" class="logo"> <!-- Add the class icon to your logo image or logo icon to add the margining -->
 			GSÜ Peralab
 		</a>
 		<!-- Header Navbar: style can be found in header.less -->
@@ -52,9 +52,9 @@
 					</a></li>
 					<li><a href="publications.jsp"><i class="fa fa-folder"></i> <span>Yayınlar</span>
 					</a></li>
-					<li><a href="widgets.html"> <i class="fa fa-th"></i> <span>Ekip</span>
+					<li><a href="team.jsp"> <i class="fa fa-th"></i> <span>Ekip</span>
 					</a></li>
-					<li><a href="#"> <i class="fa fa-laptop"></i> <span>Etkinlikler</span>
+					<li><a href="events.jsp"> <i class="fa fa-laptop"></i> <span>Etkinlikler</span>
 					</a></li>
 					<li><a href="#"> <i class="fa fa-edit"></i> <span>Haberler</span>
 					</a></li>

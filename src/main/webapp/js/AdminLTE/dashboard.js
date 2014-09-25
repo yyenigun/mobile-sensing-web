@@ -51,8 +51,8 @@ $(function() {
 
     //jvectormap data
     var visitorsData = {
-        "US": 398, //USA
-        "SA": 400, //Saudi Arabia
+        "TR": 39800, //TR
+        "US": 400, //US
         "CA": 1000, //Canada
         "DE": 500, //Germany
         "FR": 760, //France
@@ -129,20 +129,14 @@ $(function() {
         element: 'revenue-chart',
         resize: true,
         data: [
-            {y: '2011 Q1', item1: 2666, item2: 2666},
-            {y: '2011 Q2', item1: 2778, item2: 2294},
-            {y: '2011 Q3', item1: 4912, item2: 1969},
-            {y: '2011 Q4', item1: 3767, item2: 3597},
-            {y: '2012 Q1', item1: 6810, item2: 1914},
-            {y: '2012 Q2', item1: 5670, item2: 4293},
-            {y: '2012 Q3', item1: 4820, item2: 3795},
-            {y: '2012 Q4', item1: 15073, item2: 5967},
-            {y: '2013 Q1', item1: 10687, item2: 4460},
-            {y: '2013 Q2', item1: 8432, item2: 5713}
+            {y: '2013 Q4', bisiklet: 12, otomobil: 14},
+            {y: '2014 Q1', bisiklet: 15, otomobil: 18},
+            {y: '2014 Q2', bisiklet: 20, otomobil: 25},
+            {y: '2014 Q3', bisiklet: 21, otomobil: 18}
         ],
         xkey: 'y',
-        ykeys: ['item1', 'item2'],
-        labels: ['Item 1', 'Item 2'],
+        ykeys: ['bisiklet', 'otomobil'],
+        labels: ['Bisiklet', 'Otomobil'],
         lineColors: ['#a0d0e0', '#3c8dbc'],
         hideHover: 'auto'
     });

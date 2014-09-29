@@ -9,7 +9,7 @@ html, body {
 }
 </style>
 <meta charset="UTF-8">
-<title>GSÜ Peralab | Dashboard</title>
+<title>Eylem Tabanlı Algılama</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
@@ -51,7 +51,7 @@ html, body {
 	<!-- header logo: style can be found in header.less -->
 	<header class="header">
 		<a href="index.jsp" class="logo"> <!-- Add the class icon to your logo image or logo icon to add the margining -->
-			GSÜ Peralab
+			Eylem Tabanlı Algılama
 		</a>
 		<!-- Header Navbar: style can be found in header.less -->
 		<nav class="navbar navbar-static-top" role="navigation">
@@ -83,11 +83,10 @@ html, body {
 					</a></li>
 					<li><a href="news.jsp"> <i class="fa fa-edit"></i> <span>Haberler</span>
 					</a></li>
-					<li><a href="links.jsp"> <i
-							class="fa fa-table"></i> <span>Bağlantılar</span>
+					<li><a href="links.jsp"> <i class="fa fa-table"></i> <span>Bağlantılar</span>
 					</a></li>
-					<li  class="active"><a href="contact.jsp"> <i class="fa fa-envelope"></i>
-							<span>İletişim</span>
+					<li class="active"><a href="contact.jsp"> <i
+							class="fa fa-envelope"></i> <span>İletişim</span>
 					</a></li>
 				</ul>
 			</section>
@@ -99,7 +98,8 @@ html, body {
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					Peralab <small>Galatasaray Üniversitesi</small>
+					Eylem Tabanlı Kitle Kaynaklı Algılama Projesi <small>Galatasaray
+						Üniversitesi</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.jsp"><i class="fa fa-dashboard"></i>
@@ -118,6 +118,7 @@ html, body {
 					</div>
 					<div class="col-md-10">
 						<div class="box-body">
+							<p>Galatasaray Üniversitesi</p>
 							<p>Adres: Çırağan Cad. No:36 34357 Ortaköy/İstanbul
 							<p>Tel:+90 212 227 4480</p>
 							<p>Faks: 0212 259 20 85</p>

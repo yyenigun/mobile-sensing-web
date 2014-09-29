@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>GSU Peralab | Dashboard</title>
+<title>Eylem Tabanlı Algılama</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
@@ -41,7 +41,7 @@
 	<!-- header logo: style can be found in header.less -->
 	<header class="header">
 		<a href="index.jsp" class="logo"> <!-- Add the class icon to your logo image or logo icon to add the margining -->
-			GSU Peralab
+			Eylem Tabanlı Algılama
 		</a>
 		<!-- Header Navbar: style can be found in header.less -->
 		<!-- Header Navbar: style can be found in header.less -->
@@ -106,6 +106,8 @@
 					</a></li>
 					<li><a href="contact.jsp"> <i class="fa fa-laptop"></i> <span>Cihazlar</span>
 					</a></li>
+					<li><a href="map.jsp"> <i class="fa fa-table"></i>
+							<span>Harita</span>
 					<li><a href="publications.jsp"><i class="fa fa-folder"></i>
 							<span>Yayınlar</span> </a></li>
 					<li><a href="team.jsp"> <i class="fa fa-th"></i> <span>Ekip</span>

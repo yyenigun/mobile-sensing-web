@@ -90,10 +90,10 @@
 					<li><a href="index.jsp"> <i class="fa fa-dashboard"></i> <span>Ana
 								Sayfa</span>
 					</a></li>
-					<li class="active"><a href="contact.jsp"> <i
+					<li><a href="contact.jsp"> <i
 							class="fa fa-laptop"></i> <span>Cihazlar</span>
 					</a></li>
-					<li><a href="map.jsp"> <i class="fa fa-table"></i>
+					<li class="active"><a href="contact.jsp"> <i class="fa fa-envelope"></i>
 							<span>Harita</span>
 					</a></li>
 					<li><a href="publications.jsp"><i class="fa fa-folder"></i>
@@ -123,7 +123,7 @@
 				</h1>
 			<ol class="breadcrumb">
 					<li><a href="index.jsp"><i class="fa fa-dashboard"></i> Ana Sayfa</a></li>
-					<li><a href="team.jsp">Cihazlar</a></li>
+					<li><a href="team.jsp">Harita</a></li>
 				</ol>
 			</section>
 

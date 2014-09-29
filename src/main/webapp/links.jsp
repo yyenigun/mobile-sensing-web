@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>GSÜ Peralab | Dashboard</title>
+<title>Eylem Tabanlı Algılama</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
@@ -27,7 +27,7 @@
 	<!-- header logo: style can be found in header.less -->
 	<header class="header">
 		<a href="index.jsp" class="logo"> <!-- Add the class icon to your logo image or logo icon to add the margining -->
-			GSÜ Peralab
+			Eylem Tabanlı Algılama
 		</a>
 		<!-- Header Navbar: style can be found in header.less -->
 		<nav class="navbar navbar-static-top" role="navigation">
@@ -50,15 +50,15 @@
 					<li><a href="index.jsp"> <i class="fa fa-dashboard"></i> <span>Ana
 								Sayfa</span>
 					</a></li>
-					<li><a href="publications.jsp"><i
-							class="fa fa-folder"></i> <span>Yayınlar</span> </a></li>
+					<li><a href="publications.jsp"><i class="fa fa-folder"></i>
+							<span>Yayınlar</span> </a></li>
 					<li><a href="team.jsp"> <i class="fa fa-th"></i> <span>Ekip</span>
 					</a></li>
 					<li><a href="events.jsp"> <i class="fa fa-laptop"></i> <span>Etkinlikler</span>
 					</a></li>
 					<li><a href="news.jsp"> <i class="fa fa-edit"></i> <span>Haberler</span>
 					</a></li>
-					<li  class="active"><a href="links.jsp"> <i
+					<li class="active"><a href="links.jsp"> <i
 							class="fa fa-table"></i> <span>Bağlantılar</span>
 					</a></li>
 					<li><a href="contact.jsp"> <i class="fa fa-envelope"></i>
@@ -74,7 +74,8 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					Peralab <small>Galatasaray Üniversitesi</small>
+					Eylem Tabanlı Kitle Kaynaklı Algılama Projesi <small>Galatasaray
+						Üniversitesi</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.jsp"><i class="fa fa-dashboard"></i>
@@ -93,13 +94,33 @@
 					<!-- /.box-header -->
 					<div class="box-body">
 						<ul>
-							<li><a
-								href="http://personel.gsu.edu.tr/ozlem-durmaz-incel-2">http://personel.gsu.edu.tr/ozlem-durmaz-incel-2</a></li>
-							<li><a href="http://personel.gsu.edu.tr/b-atay-ozgovde">http://personel.gsu.edu.tr/ozlem-durmaz-incel-2</a></li>
-							<li>Yüksek Lisans Öğrencisi Doruk Coşkun</li>
-							<li><a href="http://yalcinyenigun.com/">Yüksek Lisans
-									Öğrencisi Yalçın Yenigün</a></li>
-							<li>Yüksek Lisans Öğrencisi Mehmet Aktaş</li>
+							<li><a href="http://www.gsu.edu.tr">Galatasaray
+									Üniversitesi</a></li>
+							<li><a href="http://bm.gsu.edu.tr/">Galatasaray
+									Üniversitesi Bilgisayar Mühendisliği Bölümü</a></li>
+						</ul>
+					</div>
+					<div class="box-header">
+						<i class="fa fa-text-width"></i>
+						<h3 class="box-title">İlgili Konferanslar</h3>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body">
+						<ul>
+							<li><a href="http://percom.org/">Percom</a></li>
+							<li><a href="http://ubicomp.org/ubicomp2014/">Ubicomp</a></li>
+							<li><a href="http://mobiquitous.org/">Mobiqutious</a></li>
+							<li><a href="http://www.cister.isep.ipp.pt/ewsn2015">EWSN</a></li>
+							<li><a href="http://cse.stfx.ca/~uic2014/cfp.php ">UIC</a></li>
+							<li><a href="http://www.cister.isep.ipp.pt/ewsn2015">ISSNIP</a></li>
+							<li><a href="http://pervasivehealth.org/2015/show/home">Pervasive
+									Health</a></li>
+							<li><a href="http://mobicase.org/">Mobicase</a></li>
+							<li><a href="http://iwcmc.org/">IWCMC</a></li>
+							<li><a href="http://www.icmu.org/">ICMU</a></li>
+							<li><a href="http://ami-conferences.org/ ">AMI</a></li>
+							<li><a href="http://www.iswc.net/">ISWC</a></li>
+							<li><a href="http://cs-conferences.acadiau.ca/mobispc-14/">MobiSPC</a></li>
 						</ul>
 					</div>
 					<!-- /.box-body -->

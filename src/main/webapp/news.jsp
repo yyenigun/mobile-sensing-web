@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>GSÜ Peralab | Dashboard</title>
+<title>Eylem Tabanlı Algılama</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
@@ -27,7 +27,7 @@
 	<!-- header logo: style can be found in header.less -->
 	<header class="header">
 		<a href="index.jsp" class="logo"> <!-- Add the class icon to your logo image or logo icon to add the margining -->
-			GSÜ Peralab
+			Eylem Tabanlı Algılama
 		</a>
 		<!-- Header Navbar: style can be found in header.less -->
 		<nav class="navbar navbar-static-top" role="navigation">
@@ -75,7 +75,7 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					Peralab <small>Galatasaray Üniversitesi</small>
+							Eylem Tabanlı Kitle Kaynaklı Algılama Projesi  <small>Galatasaray Üniversitesi</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.jsp"><i class="fa fa-dashboard"></i>
@@ -99,9 +99,6 @@
 									<button type="button" class="btn btn-default btn-sm active">
 										<i class="fa fa-square text-green"></i>
 									</button>
-									<button type="button" class="btn btn-default btn-sm">
-										<i class="fa fa-square text-red"></i>
-									</button>
 								</div>
 							</div>
 						</div>
@@ -112,10 +109,8 @@
 								<p class="message">
 									<a href="#" class="name"> <small
 										class="text-muted pull-right"><i class="fa fa-clock-o"></i>
-											24.11.2014 - 2:15</small> Haber 1
-									</a> I would like to meet you to discuss the latest news about the
-									arrival of the new theme. They say it is going to be one the
-									best themes on the market
+											24.06.2014 - 14:15</small> Haziran 2014 - Bitirme Projeleri 
+									</a> Bitirme Projesi öğrencileri poster ve proje sunumlarını  gerçekleştirdiler 
 								</p>
 								<!-- /.attachment -->
 							</div>
@@ -124,12 +119,10 @@
 							<div class="item">
 								<br /> <br />
 								<p class="message">
-									<a href="#" class="name"> <small
+									<a href="http://siu2014.ktu.edu.tr/" class="name"> <small
 										class="text-muted pull-right"><i class="fa fa-clock-o"></i>
-											24.11.2014 - 2:15</small> Haber 1
-									</a> I would like to meet you to discuss the latest news about the
-									arrival of the new theme. They say it is going to be one the
-									best themes on the market
+											14.04.2014 - 12:15</small> SIU 2014
+									</a>  SIU 2014 Konferansında Position-Aware Activity Recognition On Mobıle Phones başlıklı bildirimizi sunduk
 								</p>
 								<!-- /.attachment -->
 							</div>

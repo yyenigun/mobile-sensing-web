@@ -37,7 +37,47 @@
 				class="icon-bar"></span> <span class="icon-bar"></span> <span
 				class="icon-bar"></span>
 			</a>
+			<div class="navbar-right">
+				<ul class="nav navbar-nav">
+					<!-- User Account: style can be found in dropdown.less -->
+					<li class="dropdown user user-menu"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown"> <i
+							class="glyphicon glyphicon-user"></i> <span>admin<i
+								class="caret"></i></span>
+					</a>
+						<ul class="dropdown-menu">
+							<!-- User image -->
+							<li class="user-header bg-light-blue"><img
+								src="img/avatar3.png" class="img-circle" alt="User Image" />
+								<p>
+									Jane Doe - Web Developer <small>Member since Nov. 2012</small>
+								</p></li>
+							<!-- Menu Body -->
+							<li class="user-body">
+								<div class="col-xs-4 text-center">
+									<a href="#">Followers</a>
+								</div>
+								<div class="col-xs-4 text-center">
+									<a href="#">Sales</a>
+								</div>
+								<div class="col-xs-4 text-center">
+									<a href="#">Friends</a>
+								</div>
+							</li>
+							<!-- Menu Footer-->
+							<li class="user-footer">
+								<div class="pull-left">
+									<a href="#" class="btn btn-default btn-flat">Profile</a>
+								</div>
+								<div class="pull-right">
+									<a href="#" class="btn btn-default btn-flat">Sign out</a>
+								</div>
+							</li>
+						</ul></li>
+				</ul>
+			</div>
 		</nav>
+
 	</header>
 	<div class="wrapper row-offcanvas row-offcanvas-left">
 		<!-- Left side column. contains the logo and sidebar -->
@@ -50,8 +90,13 @@
 					<li><a href="index.jsp"> <i class="fa fa-dashboard"></i> <span>Ana
 								Sayfa</span>
 					</a></li>
-					<li class="active"><a href="publications.jsp"><i
-							class="fa fa-folder"></i> <span>Yayınlar</span> </a></li>
+					<li class="active"><a href="contact.jsp"> <i
+							class="fa fa-laptop"></i> <span>Cihazlar</span>
+					</a></li>
+					<li><a href="contact.jsp"> <i class="fa fa-table"></i> <span>Harita</span>
+					</a></li>
+					<li><a href="publications.jsp"><i class="fa fa-folder"></i>
+							<span>Yayınlar</span> </a></li>
 					<li><a href="team.jsp"> <i class="fa fa-th"></i> <span>Ekip</span>
 					</a></li>
 					<li><a href="events.jsp"> <i class="fa fa-laptop"></i> <span>Etkinlikler</span>
@@ -73,78 +118,63 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					Eylem Tabanlı Kitle Kaynaklı Algılama Projesi <small>Galatasaray
-						Üniversitesi</small>
+					Samsung Galaxy S <small>Cihaz Detayı</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.jsp"><i class="fa fa-dashboard"></i>
 							Ana Sayfa</a></li>
-					<li><a href="publications.jsp">Yayınlar</a></li>
+					<li><a href="team.jsp">Cihazlar</a></li>
+					<li><a href="team.jsp">Samsung Galaxy S</a></li>
 				</ol>
 			</section>
 
 			<!-- Main content -->
 			<section class="content">
-				<div class="box box-solid">
-					<div class="box-header">
-						<i class="fa fa-text-width"></i>
-						<h3 class="box-title">Yayınlar</h3>
-					</div>
-					<!-- /.box-header -->
-					<div class="box-body">
-						<ul>
+				<div class="row">
+					<div class="box">
+						<div class="box-header">
+							<h3 class="box-title">Cihaz Durumu</h3>
+						</div>
+						<!-- /.box-header -->
+						<div class="box-body table-responsive">
+							<table id="example1" class="table table-bordered table-striped">
+								<tbody>
+									<tr>
+										<td>Marka : Samsung</td>
+									</tr>
+									<tr>
+										<td>Model : Galaxy S</td>
+									</tr>
+									<tr>
+										<td>Pil Durumu : %82</td>
+									</tr>
+									<tr>
+										<td>Sıcaklık : 20</td>
+									</tr>
+									<tr>
+										<td>Son Giriş : 2014-05-05 20:42:33</td>
+									</tr>
+									<tr>
+										<td>Kayıt Tarihi : 2014-03-03 20:42:33</td>
+									</tr>
 
-							<li>(under review) M. Shoaib, S. Bosch, Ö. Durmaz Incel, H.
-								Scholten, P.J.M. Havinga, A survey of real-time physical
-								activity recognition using mobile phones, submitted to 11th IEEE
-								International Conference on Ubiquitous Intelligence and
-								Computing, 2014.</li>
-							<li>(under review) D. Coşkun, Ö. Durmaz İncel, A. Özgövde,
-								Phone Position/Placement Detection using Accelerometer: Impact
-								on Activity Recognition, submitted to 11th IEEE International
-								Conference on Ubiquitous Intelligence and Computing, 2014.</li>
-							<li>M. Shoaib, S. Bosch, Ö. Durmaz Incel, H. Scholten,
-								P.J.M. Havinga, Fusion of Smartphone Motion Sensors for Physical
-								Activity Recognition, Sensors 14 (6), 10146-10176, June 2014.</li>
-							<li>D. Coşkun, Ö. Durmaz İncel, A. Özgövde, Posıtıon-Aware
-								Actıvıty Recognıtıon On Mobıle Phones, 22nd Signal Processing
-								and Communication Applications Symposium, April 2014</li>
-							<li>Üstev, Y.E., Ersoy, C. and Ö. Durmaz Incel, User, Device
-								and Orientation Independent Human Activity Recognition on Mobile
-								Phones: Challenges and a Proposal. In Adj. Proc. UbiComp'13,
-								Ubiquitous Mobile Instrumentation (UbiMI'13)</li>
-							<li>Ö. Durmaz Incel, M. Kose, C. Ersoy A Review and Taxonomy
-								of Activity Recognition on Mobile Phones, Springer
-								BioNanoScience Journal, Special Issue on Personal Health Systems
-								for Well-being and Lifestyle Change, 2013.</li>
-							<li>E. Toplan, Y.E Ustev, Ö. Durmaz Incel, C. Ersoy, Eylem
-								Tanıma ile Şehir Dinamiklerini Elde Etmek, Akademik Bilişim
-								2013, Antalya, Ocak 2013.</li>
-							<li>B. Kosucu, Ö. Durmaz Incel and C. Ersoy, Kitle Kaynaklı
-								ve Katılımcılı Algılama Konularına Genel Bakış ve Açık Noktalar,
-								Akademik Bilişim 2013, Antalya, Ocak 2013.</li>
-							<li>M. Kose, Ö. Durmaz Incel, C. Ersoy, Online Human
-								Activity Recognition on Smart Phones, accepted to the Workshop
-								on Mobile Sensing: From Smartphones and Wearables to Big Data
-								(colocated with IPSN 2012), April 2012.</li>
-							<li>M. Kose, Ö. Durmaz Incel, C. Ersoy, Performance
-								Evaluation of Classification Methods for Online Activity
-								Recognition on Smart Phones, accepted to 20th Signal Processing
-								and Communication Applications Symposium, April 2012.</li>
 
-						</ul>
+								</tbody>
+							</table>
+						</div>
+						<!-- /.box-body -->
 					</div>
-					<!-- /.box-body -->
+					<!-- /.box -->
 				</div>
-				<!-- /.box -->
+				<!-- /. box -->
 			</section>
+
 			<!-- /.content -->
 		</aside>
+
 		<!-- /.right-side -->
 	</div>
 	<!-- ./wrapper -->
-
-
 	<!-- jQuery 2.0.2 -->
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
@@ -152,5 +182,11 @@
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<!-- AdminLTE App -->
 	<script src="js/AdminLTE/app.js" type="text/javascript"></script>
+
+	<script src="js/plugins/fullcalendar/fullcalendar.min.js"
+		type="text/javascript"></script>
+	<!-- Page specific script -->
+
+
 </body>
 </html>

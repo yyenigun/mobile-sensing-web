@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>GSÜ Peralab | Dashboard</title>
+<title>Eylem Tabanlı Algılama</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
@@ -27,7 +27,7 @@
 	<!-- header logo: style can be found in header.less -->
 	<header class="header">
 		<a href="index.jsp" class="logo"> <!-- Add the class icon to your logo image or logo icon to add the margining -->
-			GSÜ Peralab
+			Eylem Tabanlı Algılama
 		</a>
 		<!-- Header Navbar: style can be found in header.less -->
 		<nav class="navbar navbar-static-top" role="navigation">
@@ -43,23 +43,23 @@
 		<!-- Left side column. contains the logo and sidebar -->
 		<aside class="left-side sidebar-offcanvas">
 			<!-- sidebar: style can be found in sidebar.less -->
-						<section class="sidebar">
+			<section class="sidebar">
 
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu">
 					<li><a href="index.jsp"> <i class="fa fa-dashboard"></i> <span>Ana
 								Sayfa</span>
 					</a></li>
-					<li><a href="publications.jsp"><i
-							class="fa fa-folder"></i> <span>Yayınlar</span> </a></li>
-					<li class="active"><a href="team.jsp"> <i class="fa fa-th"></i> <span>Ekip</span>
+					<li><a href="publications.jsp"><i class="fa fa-folder"></i>
+							<span>Yayınlar</span> </a></li>
+					<li class="active"><a href="team.jsp"> <i class="fa fa-th"></i>
+							<span>Ekip</span>
 					</a></li>
 					<li><a href="events.jsp"> <i class="fa fa-laptop"></i> <span>Etkinlikler</span>
 					</a></li>
 					<li><a href="news.jsp"> <i class="fa fa-edit"></i> <span>Haberler</span>
 					</a></li>
-					<li><a href="links.jsp"> <i class="fa fa-table"></i>
-							<span>Bağlantılar</span>
+					<li><a href="links.jsp"> <i class="fa fa-table"></i> <span>Bağlantılar</span>
 					</a></li>
 					<li><a href="contact.jsp"> <i class="fa fa-envelope"></i>
 							<span>İletişim</span>
@@ -74,10 +74,12 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					Peralab <small>Galatasaray Üniversitesi</small>
+					Eylem Tabanlı Kitle Kaynaklı Algılama Projesi <small>Galatasaray
+						Üniversitesi</small>
 				</h1>
 				<ol class="breadcrumb">
-					<li><a href="index.jsp"><i class="fa fa-dashboard"></i> Ana Sayfa</a></li>
+					<li><a href="index.jsp"><i class="fa fa-dashboard"></i>
+							Ana Sayfa</a></li>
 					<li><a href="team.jsp">Ekip</a></li>
 				</ol>
 			</section>
@@ -92,12 +94,36 @@
 					<div class="col-md-10">
 						<div class="box-body">
 							<ul>
-
-								<li><a href="http://personel.gsu.edu.tr/ozlem-durmaz-incel-2">Yrd. Doç. Dr. Özlem Durmaz İncel</a></li>
-								<li><a href="http://personel.gsu.edu.tr/b-atay-ozgovde">Yrd. Doç. Dr. Bahri Atay Özgövde</a></li>
+								<li><a
+									href="http://www.cmpe.boun.edu.tr/~ersoy/CemErsoySite/Home.html">Prof.
+										Dr. Cem Ersoy (Boğaziçi Üniversitesi)</a></li>
+								<li><a
+									href="http://personel.gsu.edu.tr/ozlem-durmaz-incel-2">Yrd.
+										Doç. Dr. Özlem Durmaz İncel</a></li>
+								<li><a href="http://personel.gsu.edu.tr/b-atay-ozgovde">Yrd.
+										Doç. Dr. Bahri Atay Özgövde</a></li>
 								<li>Yüksek Lisans Öğrencisi Doruk Coşkun</li>
-								<li><a href="http://yalcinyenigun.com/">Yüksek Lisans Öğrencisi Yalçın Yenigün</a></li>
+								<li><a href="http://yalcinyenigun.com/">Yüksek Lisans
+										Öğrencisi Yalçın Yenigün</a></li>
 								<li>Yüksek Lisans Öğrencisi Mehmet Aktaş</li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+				<h2 class="page-header">Mezunlar</h2>
+				<div class="row">
+					<div class="col-md-2">
+						<img src="http://acuns.org/wp-content/uploads/2012/05/graduate.jpg" />
+					</div>
+					<div class="col-md-10">
+						<div class="box-body">
+							<ul>
+								<li>Tülin İzer (Lisans 2014)</li>
+								<li>Kübra Sönmez (Lisans 2014)</li>
+								<li>Özkan Çiftçi (Lisans 2014)</li>
+								<li>Yüksek Lisans Öğrencisi Doruk Coşkun</li>
+								<li>Mustafa Dönmez (Lisans 2014)</li>
 							</ul>
 						</div>
 					</div>

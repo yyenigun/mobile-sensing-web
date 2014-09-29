@@ -97,93 +97,38 @@
 						<!-- The time line -->
 						<ul class="timeline">
 							<!-- timeline time label -->
-							<li class="time-label"><span class="bg-red"> 10 Feb.
+							<li class="time-label"><span class="bg-red"> Haziran
 									2014 </span></li>
 							<!-- /.timeline-label -->
 							<!-- timeline item -->
-							<li><i class="fa fa-envelope bg-blue"></i>
+							<li><i class="fa fa-camera bg-blue"></i>
 								<div class="timeline-item">
-									<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-									<h3 class="timeline-header">
-										<a href="#">Support Team</a> sent you and email
-									</h3>
-									<div class="timeline-body">Etsy doostang zoodles disqus
-										groupon greplin oooj voxy zoodles, weebly ning heekya handango
-										imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo
-										ifttt zimbra. Babblely odeo kaboodle quora plaxo ideeli hulu
-										weebly balihoo...</div>
-									<div class='timeline-footer'>
-										<a class="btn btn-primary btn-xs">Read more</a> <a
-											class="btn btn-danger btn-xs">Delete</a>
-									</div>
-								</div></li>
-							<!-- END timeline item -->
-							<!-- timeline item -->
-							<li><i class="fa fa-user bg-aqua"></i>
-								<div class="timeline-item">
-									<span class="time"><i class="fa fa-clock-o"></i> 5 mins
-										ago</span>
-									<h3 class="timeline-header no-border">
-										<a href="#">Sarah Young</a> accepted your friend request
-									</h3>
-								</div></li>
-							<!-- END timeline item -->
-							<!-- timeline item -->
-							<li><i class="fa fa-comments bg-yellow"></i>
-								<div class="timeline-item">
-									<span class="time"><i class="fa fa-clock-o"></i> 27 mins
-										ago</span>
-									<h3 class="timeline-header">
-										<a href="#">Jay White</a> commented on your post
-									</h3>
-									<div class="timeline-body">Take me to your leader!
-										Switzerland is small and neutral! We are more like Germany,
-										ambitious and misunderstood!</div>
-									<div class='timeline-footer'>
-										<a class="btn btn-warning btn-flat btn-xs">View comment</a>
+									<span class="time"><i class="fa fa-clock-o"></i> 12:15</span>
+									<h3 class="timeline-header">Bitirme Projesi öğrencileri
+										poster ve proje sunumlarını gerçekleştirdiler</h3>
+									<div class="timeline-body">
+										<img src="img/TulinBitirme.jpg" alt="..." class='margin' />
 									</div>
 								</div></li>
 							<!-- END timeline item -->
 							<!-- timeline time label -->
-							<li class="time-label"><span class="bg-green"> 3 Jan.
+							<li class="time-label"><span class="bg-green"> Nisan
 									2014 </span></li>
 							<!-- /.timeline-label -->
 							<!-- timeline item -->
 							<li><i class="fa fa-camera bg-purple"></i>
 								<div class="timeline-item">
-									<span class="time"><i class="fa fa-clock-o"></i> 2 days
-										ago</span>
-									<h3 class="timeline-header">
-										<a href="#">Mina Lee</a> uploaded new photos
-									</h3>
+									<span class="time"><i class="fa fa-clock-o"></i> 11:12</span>
+									<h3 class="timeline-header">SIU 2014 Konferansında
+										Posıtıon-Aware Actıvıty Recognıtıon On Mobıle Phones başlıklı
+										bildirimizi sunduk</h3>
 									<div class="timeline-body">
-										<img src="http://placehold.it/150x100" alt="..."
-											class='margin' /> <img src="http://placehold.it/150x100"
-											alt="..." class='margin' /> <img
-											src="http://placehold.it/150x100" alt="..." class='margin' />
-										<img src="http://placehold.it/150x100" alt="..."
-											class='margin' />
+										<img src="img/2014-4-Trabzon-SIU.JPG" alt="..." class='margin' />
 									</div>
 								</div></li>
 							<!-- END timeline item -->
 							<!-- timeline item -->
-							<li><i class="fa fa-video-camera bg-maroon"></i>
-								<div class="timeline-item">
-									<span class="time"><i class="fa fa-clock-o"></i> 5 days
-										ago</span>
-									<h3 class="timeline-header">
-										<a href="#">Mr. Doe</a> shared a video
-									</h3>
-									<div class="timeline-body">
-										<iframe width="300" height="169"
-											src="//www.youtube.com/embed/fLe_qO4AE-M" frameborder="0"
-											allowfullscreen></iframe>
-									</div>
-									<div class="timeline-footer">
-										<a href="#" class="btn btn-xs bg-maroon">See comments</a>
-									</div>
-								</div></li>
-							<!-- END timeline item -->
+
 							<li><i class="fa fa-clock-o"></i></li>
 						</ul>
 					</div>

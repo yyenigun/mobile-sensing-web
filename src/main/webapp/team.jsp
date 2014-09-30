@@ -89,7 +89,7 @@
 				<h2 class="page-header">Ekip</h2>
 				<div class="row">
 					<div class="col-md-2">
-						<img src="http://www.assertid.com/images/team.png" />
+						<img src="http://therefugechristianchurch.com/wp-content/uploads/2013/12/Team.jpg" />
 					</div>
 					<div class="col-md-10">
 						<div class="box-body">

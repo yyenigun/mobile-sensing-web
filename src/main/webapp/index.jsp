@@ -83,6 +83,7 @@
 
 			<!-- Main content -->
 			<section class="content">
+
 				<div class="row">
 					<div class="col-xs-3"></div>
 					<div class="col-xs-6">
@@ -100,13 +101,15 @@
 									<div class="carousel-inner">
 
 										<div class="item active">
-											<img src="img/2014-4-Trabzon-SIU.JPG" alt="Second slide" class="mainCarouselImg"/>
+											<img src="img/2014-4-Trabzon-SIU.JPG" alt="Second slide"
+												class="mainCarouselImg" />
 											<div class="carousel-caption">Nisan 2014: SIU 2014
 												Konferansında Position-Aware Activity Recognition On Mobıle
 												Phones başlıklı bildirimizi sunduk</div>
 										</div>
 										<div class="item ">
-											<img src="img/TulinBitirme.jpg" alt="First slide" class="mainCarouselImg" />
+											<img src="img/TulinBitirme.jpg" alt="First slide"
+												class="mainCarouselImg" />
 											<div class="carousel-caption">Haziran 2014: Bitirme
 												Projesi öğrencileri poster ve proje sunumlarını
 												gerçekleştirdiler</div>
@@ -127,9 +130,16 @@
 					</div>
 					<!-- /.col -->
 				</div>
+
+				<div class="row">
+					<div class="col-xs-6">Bu proje Tübitak 3501-Kariyer
+						Geliştirme Programı tarafından 113E271 numara ile
+						desteklenmektedir.</div>
+				</div>
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-md-12">
+						<h3 class="box-title">Özet</h3>
 						<p>Kablosuz algılayıcılar ile eylem tanıma ve kitle kaynaklı
 							algılama konuları yaygın hesaplama alanında öne çıkan araştırma
 							konuları arasında yer almaktadır. Eylem tanıma konusu farklı

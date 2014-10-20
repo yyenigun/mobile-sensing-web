@@ -24,11 +24,26 @@ import tr.edu.gsu.peralab.mobilesensing.web.entity.User;
 
 @Service("userService")
 public class UserService {
-	
+
 	@Autowired
 	UserDAO userDAO;
 
-	public User findUser(String userName, String password){
+	public User findUser(String userName, String password) {
 		return userDAO.retrieveUser(userName, password);
+	}
+
+	public static boolean isUniqueChars2(String str) {
+		boolean[] char_set = new boolean[256];
+		for (int i = 0; i < str.length(); i++) {
+			int val = str.charAt(i);
+			if (char_set[val])
+				return false;
+			char_set[val] = true;
+		}
+		return true;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(isUniqueChars2("abcde"));
 	}
 }

@@ -6,7 +6,7 @@ apply plugin: 'eclipse-wtp'
 sourceCompatibility = '1.6'
 targetCompatibility = '1.6'
 
-def springVersion = '3.2.5.RELEASE'
+def springVersion = '3.1.4.RELEASE'
 def jsfApi = '2.2.5'
 def primefaces = '4.0'
 
@@ -47,9 +47,9 @@ dependencies {
 	compile "org.springframework:spring-context:$springVersion"
 	compile "org.springframework:spring-webmvc:$springVersion"
 	compile "org.springframework:spring-jdbc:$springVersion"
-	compile "org.springframework.security:spring-security-core:3.2.5.RELEASE"
-	compile "org.springframework.security:spring-security-web:3.2.5.RELEASE"
-	compile "org.springframework.security:spring-security-config:3.2.5.RELEASE"
+	compile "org.springframework.security:spring-security-core:$springVersion"
+	compile "org.springframework.security:spring-security-web:$springVersion"
+	compile "org.springframework.security:spring-security-config:$springVersion"
 	compile 'org.apache.commons:commons-lang3:3.2.1'
 	compile 'javax.inject:javax.inject:1'
 	providedCompile 'javax.servlet:servlet-api:2.5'

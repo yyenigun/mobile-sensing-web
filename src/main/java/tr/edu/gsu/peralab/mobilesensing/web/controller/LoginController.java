@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoginController {
 
 	@RequestMapping("/secured/main")
-	public String mypage(Model model, Principal principal) {
+	public String main(Model model, Principal principal) {
 		String userName = principal.getName();
-		model.addAttribute("message", "Hi " + userName + ", Welcome to 'Spring Security Custom Login Form Example'");
+		model.addAttribute("username", userName);
 
 		return "secured/main";
 	}
 	
-	@RequestMapping(value = "/logoutPage", method = RequestMethod.GET)
-	public String logoutPage() {
-		return "logoutPage";
+	@RequestMapping(value = "/indexPage", method = RequestMethod.GET)
+	public String indexPage() {
+		return "indexPage";
 	}
 	
 	@RequestMapping(value = "/loginPage", method = RequestMethod.GET)

@@ -58,35 +58,24 @@
 					<!-- User Account: style can be found in dropdown.less -->
 					<li class="dropdown user user-menu"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"> <i
-							class="glyphicon glyphicon-user"></i> <span>admin<i
+							class="glyphicon glyphicon-user"></i> <span>${username}<i
 								class="caret"></i></span>
 					</a>
 						<ul class="dropdown-menu">
 							<!-- User image -->
 							<li class="user-header bg-light-blue"><img
-								src="img/avatar3.png" class="img-circle" alt="User Image" />
+								src="<c:url value="/resources/img/avatar3.png" />" class="img-circle" alt="User Image" />
 								<p>
-									Jane Doe - Web Developer <small>Member since Nov. 2012</small>
+									${username}
 								</p></li>
-							<!-- Menu Body -->
-							<li class="user-body">
-								<div class="col-xs-4 text-center">
-									<a href="#">Followers</a>
-								</div>
-								<div class="col-xs-4 text-center">
-									<a href="#">Sales</a>
-								</div>
-								<div class="col-xs-4 text-center">
-									<a href="#">Friends</a>
-								</div>
-							</li>
+				
 							<!-- Menu Footer-->
 							<li class="user-footer">
 								<div class="pull-left">
 									<a href="#" class="btn btn-default btn-flat">Profile</a>
 								</div>
 								<div class="pull-right">
-									<a href="#" class="btn btn-default btn-flat">Sign out</a>
+									<a href="${pageContext.request.contextPath}/logout" class="btn btn-default btn-flat">Sign out</a>
 								</div>
 							</li>
 						</ul></li>
@@ -284,29 +273,29 @@
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 	<!-- jQuery UI 1.10.3 -->
-	<script src="/resources/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
+	<script src="<c:url value="/resources/js/jquery-ui-1.10.3.min.js" />" type="text/javascript" type="text/javascript"></script>
 	<!-- Bootstrap -->
-	<script src="/resources/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="<c:url value="/resources/js/bootstrap.min.js" />" type="text/javascript"></script>
 	<!-- Morris.js charts -->
 	<script
 		src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-	<script src="/resources/js/plugins/morris/morris.min.js" type="text/javascript"></script>
+	<script src="<c:url value="/resources/js/plugins/morris/morris.min.js" />" type="text/javascript"></script>
 	<!-- Sparkline -->
-	<script src="/resources/js/plugins/sparkline/jquery.sparkline.min.js"
+	<script src="<c:url value="/resources/js/plugins/sparkline/jquery.sparkline.min.js" />"
 		type="text/javascript"></script>
 	<!-- jvectormap -->
-	<script src="/resources/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"
+	<script src="<c:url value="/resources/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" />"
 		type="text/javascript"></script>
-	<script src="/resources/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"
+	<script src="<c:url value="/resources/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" />"
 		type="text/javascript"></script>
 	<!-- jQuery Knob Chart -->
-	<script src="/resources/js/plugins/jqueryKnob/jquery.knob.js"
+	<script src="<c:url value="/resources/js/plugins/jqueryKnob/jquery.knob.js" />"
 		type="text/javascript"></script>
 	<!-- daterangepicker -->
-	<script src="/resources/js/plugins/daterangepicker/daterangepicker.js"
+	<script src="<c:url value="/resources/js/plugins/daterangepicker/daterangepicker.js" />"
 		type="text/javascript"></script>
 	<!-- datepicker -->
-	<script src="/resources/js/plugins/datepicker/bootstrap-datepicker.js"
+	<script src="<c:url value="/resources/js/plugins/datepicker/bootstrap-datepicker.js" />"
 		type="text/javascript"></script>
 	<!-- Bootstrap WYSIHTML5 -->
 	<script

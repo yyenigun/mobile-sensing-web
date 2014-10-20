@@ -13,7 +13,7 @@
 		<form-login login-processing-url="/login" login-page="/loginPage"
 			username-parameter="username" password-parameter="password"
 			default-target-url="/secured/main" authentication-failure-url="/loginPage?auth=fail" />
-		<logout logout-url="/logout" logout-success-url="/logoutPage" />	    
+		<logout logout-url="/logout" logout-success-url="/indexPage" />	    
 	</http>
 
 	<authentication-manager>

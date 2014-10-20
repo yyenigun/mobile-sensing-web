@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" session="false"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +9,17 @@
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
 <!-- bootstrap 3.0.2 -->
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/bootstrap.min.css" />"
+	rel="stylesheet" type="text/css" />
 <!-- font Awesome -->
-<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/font-awesome.min.css" />"
+	rel="stylesheet" type="text/css" />
 <!-- Ionicons -->
-<link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/ionicons.min.css" />"
+	rel="stylesheet" type="text/css" />
 <!-- Theme style -->
-<link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/AdminLTE.css" />"
+	rel="stylesheet" type="text/css" />
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,6 +42,14 @@
 				class="icon-bar"></span> <span class="icon-bar"></span> <span
 				class="icon-bar"></span>
 			</a>
+			<div class="navbar-right">
+				<ul class="nav navbar-nav">
+					<!-- User Account: style can be found in dropdown.less -->
+					<a href="loginPage" class="navbar-btn sidebar-toggle"  > <!-- Add the class icon to your logo image or logo icon to add the margining -->
+						<span>Oturum Açın</span>
+					</a>
+				</ul>
+			</div>
 		</nav>
 	</header>
 	<div class="wrapper row-offcanvas row-offcanvas-left">
@@ -101,15 +114,16 @@
 									<div class="carousel-inner">
 
 										<div class="item active">
-											<img src="img/2014-4-Trabzon-SIU.JPG" alt="Second slide"
-												class="mainCarouselImg" />
+											<img
+												src="<c:url value="/resources/img/2014-4-Trabzon-SIU.JPG" />"
+												alt="Second slide" class="mainCarouselImg" />
 											<div class="carousel-caption">Nisan 2014: SIU 2014
 												Konferansında Position-Aware Activity Recognition On Mobıle
 												Phones başlıklı bildirimizi sunduk</div>
 										</div>
 										<div class="item ">
-											<img src="img/TulinBitirme.jpg" alt="First slide"
-												class="mainCarouselImg" />
+											<img src="<c:url value="/resources/img/TulinBitirme.jpg" />"
+												alt="First slide" class="mainCarouselImg" />
 											<div class="carousel-caption">Haziran 2014: Bitirme
 												Projesi öğrencileri poster ve proje sunumlarını
 												gerçekleştirdiler</div>
@@ -244,11 +258,14 @@
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="<c:url value="/resources/js/bootstrap.min.js" />"
+		type="text/javascript"></script>
 	<!-- AdminLTE App -->
-	<script src="js/AdminLTE/app.js" type="text/javascript"></script>
+	<script src="<c:url value="/resources/js/AdminLTE/app.js" />"
+		type="text/javascript"></script>
 
-	<script src="js/plugins/fullcalendar/fullcalendar.min.js"
+	<script
+		src="<c:url value="/resources/js/plugins/fullcalendar/fullcalendar.min.js" />"
 		type="text/javascript"></script>
 	<!-- Page specific script -->
 

@@ -33,14 +33,11 @@
 			<div class="body bg-gray">
 				<div class="form-group">
 					<input type="text" name="username" class="form-control"
-						placeholder="User ID" />
+						placeholder="Kullanıcı Adı" />
 				</div>
 				<div class="form-group">
 					<input type="password" name="password" class="form-control"
-						placeholder="Password" />
-				</div>
-				<div class="form-group">
-					<input type="checkbox" name="remember_me" /> Beni hatırla
+						placeholder="Şifre" />
 				</div>
 				<c:if test="${'fail' eq param.auth}">
 					<div style="color: red">
@@ -50,10 +47,6 @@
 			</div>
 			<div class="footer">
 				<button type="submit" name="submit" class="btn bg-olive btn-block">Giriş</button>
-
-				<p>
-					<a href="#">Şifremi unuttum</a>
-				</p>
 			</div>
 		</form>
 	</div>

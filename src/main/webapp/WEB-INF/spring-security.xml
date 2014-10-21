@@ -15,13 +15,11 @@
 			default-target-url="/secured/main" authentication-failure-url="/loginPage?auth=fail" />
 		<logout logout-url="/logout" logout-success-url="/indexPage" />	    
 	</http>
-
+	
 	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="admin" password="Password01" authorities="ROLE_USER" />
-			</user-service>
+		<authentication-provider user-service-ref="userDetailsService">
+			<password-encoder hash="md5" />
 		</authentication-provider>
 	</authentication-manager>
-
+	
 </beans:beans>

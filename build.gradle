@@ -52,6 +52,7 @@ dependencies {
 	compile "org.springframework.security:spring-security-config:$springVersion"
 	compile 'org.apache.commons:commons-lang3:3.2.1'
 	compile 'javax.inject:javax.inject:1'
+	compile 'mysql:mysql-connector-java:5.1.6'
 	providedCompile 'javax.servlet:servlet-api:2.5'
 	providedCompile 'javax.servlet.jsp:jsp-api:2.1'
 	compile 'jstl:jstl:1.2'

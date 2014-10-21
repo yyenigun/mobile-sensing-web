@@ -13,19 +13,28 @@
         http://www.springframework.org/schema/jee/spring-jee.xsd">
 
 	<context:component-scan base-package="tr.edu.gsu.peralab.mobilesensing.web" />
+	
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/mobileSensingWebLocal"/>
+    </bean>
 
-	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/mobileSensingWeb"
-		cache="true" resource-ref="true" lookup-on-startup="false"
-		proxy-interface="javax.sql.DataSource" />
 	<mvc:annotation-driven />
+	
+	<context:annotation-config />
 
 	<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
-	
-	<mvc:view-controller path="/" view-name="indexPage"/>
+
+	<mvc:view-controller path="/" view-name="indexPage" />
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/pages/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+
+	<bean id="userDetailsService"
+		class="tr.edu.gsu.peralab.mobilesensing.web.service.CustomUserDetailsService" />
+	<bean id="authenticationService"
+		class="tr.edu.gsu.peralab.mobilesensing.web.service.AuthenticationServiceImpl" />
+
 </beans>

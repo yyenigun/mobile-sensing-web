@@ -12,10 +12,10 @@ import tr.edu.gsu.peralab.mobilesensing.web.entity.User;
 public class UserDAOImpl extends JDBCBaseDAO implements UserDAO {
 
 	@Override
-	public User retrieveUser(String userName, String password) {
+	public User retrieveUser(String userName) {
 		User user = (User) getJdbcTemplate().queryForObject(
-				SQLQuery.GET_USER_BY_USERNAME_PASSWORD.getValue(),
-				new Object[] { userName, password }, new UserRowMapper());
+				SQLQuery.GET_USER_BY_USERNAME.getValue(),
+				new Object[] { userName }, new UserRowMapper());
 		return user;
 	}
 

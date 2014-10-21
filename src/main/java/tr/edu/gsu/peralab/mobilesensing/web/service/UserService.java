@@ -29,7 +29,7 @@ public class UserService {
 	UserDAO userDAO;
 
 	public User findUser(String userName, String password) {
-		return userDAO.retrieveUser(userName, password);
+		return userDAO.retrieveUser(userName);
 	}
 
 	public static boolean isUniqueChars2(String str) {

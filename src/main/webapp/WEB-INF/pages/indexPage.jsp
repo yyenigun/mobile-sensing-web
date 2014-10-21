@@ -2,85 +2,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Eylem Tabanlı Algılama</title>
-<meta
-	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
-	name='viewport'>
-<!-- bootstrap 3.0.2 -->
-<link href="<c:url value="/resources/css/bootstrap.min.css" />"
-	rel="stylesheet" type="text/css" />
-<!-- font Awesome -->
-<link href="<c:url value="/resources/css/font-awesome.min.css" />"
-	rel="stylesheet" type="text/css" />
-<!-- Ionicons -->
-<link href="<c:url value="/resources/css/ionicons.min.css" />"
-	rel="stylesheet" type="text/css" />
-<!-- Theme style -->
-<link href="<c:url value="/resources/css/AdminLTE.css" />"
-	rel="stylesheet" type="text/css" />
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-</head>
+<jsp:include page="include/head.jsp" />
 <body class="skin-blue">
 	<!-- header logo: style can be found in header.less -->
-	<header class="header">
-		<a href="index.jsp" class="logo"> <!-- Add the class icon to your logo image or logo icon to add the margining -->
-			Eylem Tabanlı Algılama
-		</a>
-		<!-- Header Navbar: style can be found in header.less -->
-		<nav class="navbar navbar-static-top" role="navigation">
-			<!-- Sidebar toggle button-->
-			<a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas"
-				role="button"> <span class="sr-only">Toggle navigation</span> <span
-				class="icon-bar"></span> <span class="icon-bar"></span> <span
-				class="icon-bar"></span>
-			</a>
-			<div class="navbar-right">
-				<ul class="nav navbar-nav">
-					<!-- User Account: style can be found in dropdown.less -->
-					<a href="loginPage" class="navbar-btn sidebar-toggle"  > <!-- Add the class icon to your logo image or logo icon to add the margining -->
-						<span>Oturum Açın</span>
-					</a>
-				</ul>
-			</div>
-		</nav>
-	</header>
+    <jsp:include page="include/header.jsp" />
 	<div class="wrapper row-offcanvas row-offcanvas-left">
 		<!-- Left side column. contains the logo and sidebar -->
-		<aside class="left-side sidebar-offcanvas">
-			<!-- sidebar: style can be found in sidebar.less -->
-			<section class="sidebar">
-
-				<!-- sidebar menu: : style can be found in sidebar.less -->
-				<ul class="sidebar-menu">
-					<li class="active"><a href="index.jsp"> <i
-							class="fa fa-dashboard"></i> <span>Ana Sayfa</span>
-					</a></li>
-					<li><a href="publications.jsp"><i class="fa fa-folder"></i>
-							<span>Yayınlar</span> </a></li>
-					<li><a href="team.jsp"> <i class="fa fa-th"></i> <span>Ekip</span>
-					</a></li>
-					<li><a href="events.jsp"> <i class="fa fa-laptop"></i> <span>Etkinlikler</span>
-					</a></li>
-					<li><a href="news.jsp"> <i class="fa fa-edit"></i> <span>Haberler</span>
-					</a></li>
-					<li><a href="links.jsp"> <i class="fa fa-table"></i> <span>Bağlantılar</span>
-					</a></li>
-					<li><a href="contact.jsp"> <i class="fa fa-envelope"></i>
-							<span>İletişim</span>
-					</a></li>
-				</ul>
-			</section>
-			<!-- /.sidebar -->
-		</aside>
-
+		<jsp:include page="include/leftmenu.jsp" />
 		<!-- Right side column. Contains the navbar and content of the page -->
 		<aside class="right-side">
 			<!-- Content Header (Page header) -->
@@ -254,20 +182,7 @@
 	<!-- /.right-side -->
 	</div>
 	<!-- ./wrapper -->
-	<!-- jQuery 2.0.2 -->
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="<c:url value="/resources/js/bootstrap.min.js" />"
-		type="text/javascript"></script>
-	<!-- AdminLTE App -->
-	<script src="<c:url value="/resources/js/AdminLTE/app.js" />"
-		type="text/javascript"></script>
-
-	<script
-		src="<c:url value="/resources/js/plugins/fullcalendar/fullcalendar.min.js" />"
-		type="text/javascript"></script>
-	<!-- Page specific script -->
+    <jsp:include page="include/footer.jsp" />
 
 
 </body>

@@ -44,7 +44,7 @@
 				</div>
 				<c:if test="${'fail' eq param.auth}">
 					<div style="color: red">
-						Login Failed!<br />
+						Giriş başarısız.<br />
 					</div>
 				</c:if>
 			</div>

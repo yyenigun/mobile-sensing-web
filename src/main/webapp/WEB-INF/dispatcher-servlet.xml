@@ -25,7 +25,7 @@
 	<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
 
 	<mvc:view-controller path="/" view-name="indexPage" />
-
+	
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/pages/" />
@@ -34,7 +34,5 @@
 
 	<bean id="userDetailsService"
 		class="tr.edu.gsu.peralab.mobilesensing.web.service.CustomUserDetailsService" />
-	<bean id="authenticationService"
-		class="tr.edu.gsu.peralab.mobilesensing.web.service.AuthenticationServiceImpl" />
 
 </beans>

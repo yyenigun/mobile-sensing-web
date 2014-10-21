@@ -40,81 +40,10 @@
 </head>
 <body class="skin-blue">
 	<!-- header logo: style can be found in header.less -->
-	<header class="header">
-		<a href="index.jsp" class="logo"> <!-- Add the class icon to your logo image or logo icon to add the margining -->
-			Eylem Tabanlı Algılama
-		</a>
-		<!-- Header Navbar: style can be found in header.less -->
-		<!-- Header Navbar: style can be found in header.less -->
-		<nav class="navbar navbar-static-top" role="navigation">
-			<!-- Sidebar toggle button-->
-			<a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas"
-				role="button"> <span class="sr-only">Toggle navigation</span> <span
-				class="icon-bar"></span> <span class="icon-bar"></span> <span
-				class="icon-bar"></span>
-			</a>
-			<div class="navbar-right">
-				<ul class="nav navbar-nav">
-					<!-- User Account: style can be found in dropdown.less -->
-					<li class="dropdown user user-menu"><a href="#"
-						class="dropdown-toggle" data-toggle="dropdown"> <i
-							class="glyphicon glyphicon-user"></i> <span>${username}<i
-								class="caret"></i></span>
-					</a>
-						<ul class="dropdown-menu">
-							<!-- User image -->
-							<li class="user-header bg-light-blue"><img
-								src="<c:url value="/resources/img/avatar3.png" />" class="img-circle" alt="User Image" />
-								<p>
-									${username}
-								</p></li>
-				
-							<!-- Menu Footer-->
-							<li class="user-footer">
-								<div class="pull-left">
-									<a href="#" class="btn btn-default btn-flat">Profile</a>
-								</div>
-								<div class="pull-right">
-									<a href="${pageContext.request.contextPath}/logout" class="btn btn-default btn-flat">Sign out</a>
-								</div>
-							</li>
-						</ul></li>
-				</ul>
-			</div>
-		</nav>
-	</header>
+	<jsp:include page="../include/secureheader.jsp" />
 	<div class="wrapper row-offcanvas row-offcanvas-left">
 		<!-- Left side column. contains the logo and sidebar -->
-		<aside class="left-side sidebar-offcanvas">
-			<!-- sidebar: style can be found in sidebar.less -->
-			<section class="sidebar">
-
-				<!-- sidebar menu: : style can be found in sidebar.less -->
-				<ul class="sidebar-menu">
-					<li class="active"><a href="index.jsp"> <i
-							class="fa fa-dashboard"></i> <span>Ana Sayfa</span>
-					</a></li>
-					<li><a href="contact.jsp"> <i class="fa fa-laptop"></i> <span>Cihazlar</span>
-					</a></li>
-					<li><a href="map.jsp"> <i class="fa fa-table"></i>
-							<span>Harita</span>
-					<li><a href="publications.jsp"><i class="fa fa-folder"></i>
-							<span>Yayınlar</span> </a></li>
-					<li><a href="team.jsp"> <i class="fa fa-th"></i> <span>Ekip</span>
-					</a></li>
-					<li><a href="events.jsp"> <i class="fa fa-laptop"></i> <span>Etkinlikler</span>
-					</a></li>
-					<li><a href="news.jsp"> <i class="fa fa-edit"></i> <span>Haberler</span>
-					</a></li>
-					<li><a href="links.jsp"> <i class="fa fa-table"></i> <span>Bağlantılar</span>
-					</a></li>
-					<li><a href="contact.jsp"> <i class="fa fa-envelope"></i>
-							<span>İletişim</span>
-					</a></li>
-				</ul>
-			</section>
-			<!-- /.sidebar -->
-		</aside>
+		<jsp:include page="../include/secureleftmenu.jsp" />
 
 		<!-- Right side column. Contains the navbar and content of the page -->
 		<aside class="right-side">

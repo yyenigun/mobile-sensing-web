@@ -23,7 +23,8 @@ public class UserRowMapper implements RowMapper<User> {
  		user.setConInterval(rs.getInt("coninterval"));
  		user.setPopupInterval(rs.getInt("popupinterval"));
  		user.setIsOnline(rs.getInt("isonline"));
- 		user.setIsForceRestart(rs.getInt("isforcerestart"));
+ 		user.setIsForceRestart(rs.getInt("isforcestart"));
+ 		user.setPassword(rs.getString("password"));
 		return user;
 	}
 

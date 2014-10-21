@@ -10,13 +10,14 @@
 
 
 <!-- bootstrap 3.0.2 -->
-<link  href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet"
-	type="text/css" />
+<link href="<c:url value="/resources/css/bootstrap.min.css" />"
+	rel="stylesheet" type="text/css" />
 <!-- font Awesome -->
-<link href="<c:url value="/resources/css/font-awesome.min.css" />" rel="stylesheet"
-	type="text/css" />
+<link href="<c:url value="/resources/css/font-awesome.min.css" />"
+	rel="stylesheet" type="text/css" />
 <!-- Theme style -->
-<link href="<c:url value="/resources/css/AdminLTE.css" />" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/AdminLTE.css" />"
+	rel="stylesheet" type="text/css" />
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -41,9 +42,14 @@
 				<div class="form-group">
 					<input type="checkbox" name="remember_me" /> Beni hatırla
 				</div>
+				<c:if test="${'fail' eq param.auth}">
+					<div style="color: red">
+						Login Failed!<br />
+					</div>
+				</c:if>
 			</div>
 			<div class="footer">
-				<button type="submit"  name="submit" class="btn bg-olive btn-block">Giriş</button>
+				<button type="submit" name="submit" class="btn bg-olive btn-block">Giriş</button>
 
 				<p>
 					<a href="#">Şifremi unuttum</a>
@@ -57,7 +63,8 @@
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 	<!-- Bootstrap -->
-	<script src="<c:url value="/resources/js/bootstrap.min.js" />" type="text/javascript"></script>
+	<script src="<c:url value="/resources/js/bootstrap.min.js" />"
+		type="text/javascript"></script>
 
 </body>
 </html>

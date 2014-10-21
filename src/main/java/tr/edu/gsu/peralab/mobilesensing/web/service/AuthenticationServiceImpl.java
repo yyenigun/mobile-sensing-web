@@ -1,7 +1,5 @@
 package tr.edu.gsu.peralab.mobilesensing.web.service;
 
-import java.math.BigInteger;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +18,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 		if (userDetails == null) {
 			return userDetails;
 		}
-		MessageDigest digest = null;
-		digest = MessageDigest.getInstance("MD5");
-		digest.update(password.getBytes(), 0, password.length());
-		String md5 = new BigInteger(1, digest.digest()).toString(16);
-		return md5.equals(userDetails.getPassword()) ? userDetails : null;
+		return password.equals(userDetails.getPassword()) ? userDetails : null;
 	}
 
 }

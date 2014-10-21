@@ -11,9 +11,11 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import tr.edu.gsu.peralab.mobilesensing.web.dao.UserDAO;
 
+@Service
 public class CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired

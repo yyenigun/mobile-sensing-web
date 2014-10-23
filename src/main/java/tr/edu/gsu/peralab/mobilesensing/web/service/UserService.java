@@ -16,6 +16,8 @@
 
 package tr.edu.gsu.peralab.mobilesensing.web.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,19 +33,17 @@ public class UserService {
 	public User findUser(String userName, String password) {
 		return userDAO.retrieveUser(userName);
 	}
-
-	public static boolean isUniqueChars2(String str) {
-		boolean[] char_set = new boolean[256];
-		for (int i = 0; i < str.length(); i++) {
-			int val = str.charAt(i);
-			if (char_set[val])
-				return false;
-			char_set[val] = true;
-		}
-		return true;
+	
+	public int retrieveUserCount() {
+		return userDAO.retriveUserCount();
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(isUniqueChars2("abcde"));
+	public int retrieveOnlineUserCount() {
+		return userDAO.retriveOnlineUserCount();
 	}
+	
+	public List<User> retrieveAllUsers(){
+		return userDAO.retrieveAllUsers();	
+	}
+
 }

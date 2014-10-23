@@ -56,4 +56,8 @@ dependencies {
 	providedCompile 'javax.servlet:servlet-api:2.5'
 	providedCompile 'javax.servlet.jsp:jsp-api:2.1'
 	compile 'jstl:jstl:1.2'
+	testCompile 'junit:junit:4.10'
+	testCompile "org.springframework:spring-test:$springVersion"
+	testCompile 'hsqldb:hsqldb:1.8.0.7'
+	
 }

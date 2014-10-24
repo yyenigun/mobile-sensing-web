@@ -13,22 +13,25 @@
         http://www.springframework.org/schema/jee/spring-jee.xsd">
 
 	<context:component-scan base-package="tr.edu.gsu.peralab.mobilesensing.web" />
-	
+
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-        <property name="jndiName" value="java:comp/env/jdbc/mobileSensingWebLocal"/>
-    </bean>
+		<property name="jndiName" value="java:comp/env/jdbc/mobileSensingWebLocal" />
+	</bean>
 
 	<mvc:annotation-driven />
-	
+
 	<context:annotation-config />
 
 	<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
 
 	<mvc:view-controller path="/" view-name="indexPage" />
-	
-	<mvc:view-controller path="/secured/device" view-name="/secured/device"/>
-	
-	
+
+	<mvc:view-controller path="/secured/device"
+		view-name="/secured/device" />
+
+	<bean id="webexpressionHandler"
+		class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/pages/" />

@@ -47,10 +47,10 @@
 </head>
 <body class="skin-blue">
 	<!-- header logo: style can be found in header.less -->
-	<jsp:include page="../include/secureheader.jsp" />
+	<jsp:include page="../include/header.jsp" />
 	<div class="wrapper row-offcanvas row-offcanvas-left">
 		<!-- Left side column. contains the logo and sidebar -->
-		<jsp:include page="../include/secureleftmenu.jsp" />
+		<jsp:include page="../include/leftmenu.jsp" />
 
 		<!-- Right side column. Contains the navbar and content of the page -->
 		<aside class="right-side">
@@ -58,8 +58,10 @@
 			<section class="content-header">
 				<h1>Kontrol Paneli</h1>
 				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-dashboard"></i> Ana Sayfa</a></li>
-					<li><a href="team.jsp">Kontrol Paneli</a></li>
+					<li><a href="${pageContext.request.contextPath}/indexPage"><i
+							class="fa fa-dashboard"></i> Ana Sayfa</a></li>
+					<li><a href="${pageContext.request.contextPath}/secured/main">Kontrol
+							Paneli</a></li>
 				</ol>
 			</section>
 

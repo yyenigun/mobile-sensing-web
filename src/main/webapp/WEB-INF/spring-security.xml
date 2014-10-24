@@ -9,7 +9,8 @@
 	
 
 	<http auto-config="true">
-	  <intercept-url pattern="/secured/*" access="ROLE_USER" />
+	  <intercept-url pattern="/secured/**" access="ROLE_USER" />
+	  
 		<form-login login-processing-url="/login" login-page="/loginPage"
 			username-parameter="username" password-parameter="password"
 			default-target-url="/secured/main" authentication-failure-url="/loginPage?auth=fail" />

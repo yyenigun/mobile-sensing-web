@@ -21,7 +21,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tr.edu.gsu.peralab.mobilesensing.web.dao.DeviceDAO;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.UserDAO;
+import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.User;
 
 @Service("userService")
@@ -29,6 +31,9 @@ public class UserService {
 
 	@Autowired
 	UserDAO userDAO;
+	
+	@Autowired
+	DeviceDAO deviceDAO;
 
 	public User findUser(String userName, String password) {
 		return userDAO.retrieveUser(userName);
@@ -44,6 +49,10 @@ public class UserService {
 	
 	public List<User> retrieveAllUsers(){
 		return userDAO.retrieveAllUsers();	
+	}
+	
+	public Device retrieveDeviceDetail(String userName){
+		return deviceDAO.retrieveDeviceDetail(userName);
 	}
 
 }

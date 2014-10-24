@@ -26,6 +26,9 @@
 
 	<mvc:view-controller path="/" view-name="indexPage" />
 	
+	<mvc:view-controller path="/secured/device" view-name="/secured/device"/>
+	
+	
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/pages/" />

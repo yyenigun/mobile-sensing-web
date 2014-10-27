@@ -24,7 +24,7 @@ public class DeviceDAOImpl extends JDBCBaseDAO implements DeviceDAO {
 
 		String batteryLevel = null;
 		String runningApplications = null;
-
+		Device device = new Device();
 		try {
 			batteryLevel = getJdbcTemplate()
 					.queryForObject(
@@ -36,13 +36,12 @@ public class DeviceDAOImpl extends JDBCBaseDAO implements DeviceDAO {
 							phoneActQuery
 									+ " WHERE Feature = 'Application' AND Field = 'Running Applications' ORDER BY time DESC LIMIT 1",
 							String.class);
+			device.setBatteryLevel(batteryLevel);
+			device.setRunningApplicationNumber(runningApplications);
+			device.setName(userName);
 		} catch (EmptyResultDataAccessException e) {
-
+		    logger.error(e);
 		}
-		Device device = new Device();
-		device.setBatteryLevel(batteryLevel);
-		device.setRunningApplicationNumber(runningApplications);
-		device.setName(userName);
 		return device;
 	}
 

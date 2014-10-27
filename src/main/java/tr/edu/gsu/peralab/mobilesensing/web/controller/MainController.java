@@ -15,7 +15,7 @@ import tr.edu.gsu.peralab.mobilesensing.web.service.UserService;
 public class MainController {
 	
 	@Autowired
-	UserService userService;
+	private UserService userService;
 
 	@RequestMapping("/secured/main")
 	public String main(Model model, Principal principal) {

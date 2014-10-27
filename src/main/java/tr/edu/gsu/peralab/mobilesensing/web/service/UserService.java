@@ -30,10 +30,10 @@ import tr.edu.gsu.peralab.mobilesensing.web.entity.User;
 public class UserService {
 
 	@Autowired
-	UserDAO userDAO;
+	private UserDAO userDAO;
 	
 	@Autowired
-	DeviceDAO deviceDAO;
+	private DeviceDAO deviceDAO;
 
 	public User findUser(String userName, String password) {
 		return userDAO.retrieveUser(userName);

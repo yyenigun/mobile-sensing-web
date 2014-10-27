@@ -36,6 +36,7 @@ public class DeviceDAOImpl extends JDBCBaseDAO implements DeviceDAO {
 							phoneActQuery
 									+ " WHERE Feature = 'Application' AND Field = 'Running Applications' ORDER BY time DESC LIMIT 1",
 							String.class);
+			batteryLevel = batteryLevel.substring(0,batteryLevel.length()-1);
 			device.setBatteryLevel(batteryLevel);
 			device.setRunningApplicationNumber(runningApplications);
 			device.setName(userName);

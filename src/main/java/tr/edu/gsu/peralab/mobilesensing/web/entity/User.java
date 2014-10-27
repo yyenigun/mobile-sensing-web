@@ -16,6 +16,12 @@
 
 package tr.edu.gsu.peralab.mobilesensing.web.entity;
 
+/**
+ * @author yalcin.yenigun
+ * 
+ * This class contains User details.
+ * 
+ */
 public class User implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;

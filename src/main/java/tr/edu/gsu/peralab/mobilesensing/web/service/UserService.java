@@ -26,32 +26,56 @@ import tr.edu.gsu.peralab.mobilesensing.web.dao.UserDAO;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.User;
 
+/**
+ * @author yalcin.yenigun
+ * 
+ *         This class contains methods for user operations.
+ * 
+ */
 @Service("userService")
 public class UserService {
 
 	@Autowired
 	private UserDAO userDAO;
-	
+
 	@Autowired
 	private DeviceDAO deviceDAO;
 
+	/**
+	 * @param userName
+	 * @param password
+	 * @return Related user information
+	 */
 	public User findUser(String userName, String password) {
 		return userDAO.retrieveUser(userName);
 	}
-	
+
+	/**
+	 * @return Number of users in the database
+	 */
 	public int retrieveUserCount() {
 		return userDAO.retriveUserCount();
 	}
-	
+
+	/**
+	 * @return Number of online users on web application
+	 */
 	public int retrieveOnlineUserCount() {
 		return userDAO.retriveOnlineUserCount();
 	}
-	
-	public List<User> retrieveAllUsers(){
-		return userDAO.retrieveAllUsers();	
+
+	/**
+	 * @return All users in the database
+	 */
+	public List<User> retrieveAllUsers() {
+		return userDAO.retrieveAllUsers();
 	}
-	
-	public Device retrieveDeviceDetail(String userName){
+
+	/**
+	 * @param userName
+	 * @return Related user's mobile device information
+	 */
+	public Device retrieveDeviceDetail(String userName) {
 		return deviceDAO.retrieveDeviceDetail(userName);
 	}
 

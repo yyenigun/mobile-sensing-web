@@ -24,6 +24,7 @@ import org.springframework.stereotype.Service;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.DeviceDAO;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.UserDAO;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
+import tr.edu.gsu.peralab.mobilesensing.web.entity.Location;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.User;
 
 /**
@@ -77,6 +78,14 @@ public class UserService {
 	 */
 	public Device retrieveDeviceDetail(String userName) {
 		return deviceDAO.retrieveDeviceDetail(userName);
+	}
+
+	/**
+	 * @param userName
+	 * @return Related user's location information
+	 */
+	public Location retrieveLocationInformation(String userName) {
+		return deviceDAO.retriveDeviceLocation(userName);
 	}
 
 }

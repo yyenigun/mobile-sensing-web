@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
+import tr.edu.gsu.peralab.mobilesensing.web.entity.Location;
 import tr.edu.gsu.peralab.mobilesensing.web.service.UserService;
 
 @Controller
@@ -30,9 +31,11 @@ public class MainController {
 	@RequestMapping("/secured/device/{username}")
 	public String device(@PathVariable String username, Model model, Principal principal) {
 		Device device = userService.retrieveDeviceDetail(username);
+		Location location = userService.retrieveLocationInformation(username);
 		String userName = principal.getName();
 		model.addAttribute("username", userName);
 		model.addAttribute("device",device);
+		model.addAttribute("location",location);
 		return "secured/device";
 	}
 	

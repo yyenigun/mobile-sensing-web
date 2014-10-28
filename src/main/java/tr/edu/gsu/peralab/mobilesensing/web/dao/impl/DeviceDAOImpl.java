@@ -6,8 +6,10 @@ import org.springframework.stereotype.Repository;
 import tr.edu.gsu.peralab.mobilesensing.web.constant.SQLQuery;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.DeviceDAO;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.JDBCBaseDAO;
+import tr.edu.gsu.peralab.mobilesensing.web.dao.rowmapper.LocationRowMapper;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.rowmapper.UserRowMapper;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
+import tr.edu.gsu.peralab.mobilesensing.web.entity.Location;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.User;
 
 @Repository
@@ -36,14 +38,32 @@ public class DeviceDAOImpl extends JDBCBaseDAO implements DeviceDAO {
 							phoneActQuery
 									+ " WHERE Feature = 'Application' AND Field = 'Running Applications' ORDER BY time DESC LIMIT 1",
 							String.class);
-			batteryLevel = batteryLevel.substring(0,batteryLevel.length()-1);
+			batteryLevel = batteryLevel.substring(0, batteryLevel.length() - 1);
 			device.setBatteryLevel(batteryLevel);
 			device.setRunningApplicationNumber(runningApplications);
 			device.setName(userName);
 		} catch (EmptyResultDataAccessException e) {
-		    logger.error(e);
+			logger.warn(e);
 		}
 		return device;
+	}
+
+	@Override
+	public Location retriveDeviceLocation(String userName) {
+		User user = (User) getJdbcTemplate().queryForObject(
+				SQLQuery.GET_USER_BY_USERNAME.getValue(),
+				new Object[] { userName }, new UserRowMapper());
+		Location location = null;
+		try {
+			String locationQuery = "SELECT provider,latitude, longitude FROM mobilesensing.locationinfodata"
+					+ "_" + userName + "_" + user.getUserId();
+		    location = (Location) getJdbcTemplate().queryForObject(
+					locationQuery + " ORDER BY time DESC LIMIT 1",
+					new LocationRowMapper());
+		} catch (EmptyResultDataAccessException e) {
+			logger.warn(e);
+		}
+		return location;
 	}
 
 }

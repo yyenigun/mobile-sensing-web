@@ -14,25 +14,44 @@
    along with MobileSensingWeb.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package tr.edu.gsu.peralab.mobilesensing.web.dao;
-
-import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
-import tr.edu.gsu.peralab.mobilesensing.web.entity.Location;
+package tr.edu.gsu.peralab.mobilesensing.web.entity;
 
 /**
  * @author yalcin.yenigun
  * 
- *         This class is a Data Access Object for Device entity.
+ *         This class contains location information of user.
  * 
  */
-public interface DeviceDAO {
+public class Location {
 
-	/**
-	 * @param userName
-	 * @return Device information of the given user
-	 */
-	Device retrieveDeviceDetail(String userName);
-	
-	Location retriveDeviceLocation(String userName);
+	private double latitude;
+
+	private double longitude;
+
+	private String provider;
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
+	public String getProvider() {
+		return provider;
+	}
+
+	public void setProvider(String provider) {
+		this.provider = provider;
+	}
 
 }

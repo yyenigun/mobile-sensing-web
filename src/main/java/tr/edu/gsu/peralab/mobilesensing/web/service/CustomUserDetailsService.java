@@ -62,7 +62,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		if (domainUser != null) {
 			user = new User(domainUser.getUserName(), domainUser.getPassword()
 					.toLowerCase(), enabled, accountNonExpired,
-					credentialsNonExpired, accountNonLocked, getAuthorities(2));
+					credentialsNonExpired, accountNonLocked, getAuthorities(domainUser.getRights()));
 		}
 		return user;
 	}
@@ -76,7 +76,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		if (role.intValue() == 1) {
 			roles.add("ROLE_USER");
 			roles.add("ROLE_ADMIN");
-		} else if (role.intValue() == 2) {
+		} else if (role.intValue() == 0) {
 			roles.add("ROLE_USER");
 		}
 		return roles;

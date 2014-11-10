@@ -15,10 +15,27 @@
 <!-- Ionicons -->
 <link href="<c:url value="/resources/css/ionicons.min.css" />"
 	rel="stylesheet" type="text/css" />
+<!-- Morris chart -->
+<link href="<c:url value="/resources/css/morris/morris.css" />"
+	rel="stylesheet" type="text/css" />
+<!-- jvectormap -->
+<link
+	href="<c:url value="/resources/css/jvectormap/jquery-jvectormap-1.2.2.css" />"
+	rel="stylesheet" type="text/css" />
+<!-- Date Picker -->
+<link href="<c:url value="/resources/css/datepicker/datepicker3.css" />"
+	rel="stylesheet" type="text/css" />
+<!-- Daterange picker -->
+<link
+	href="<c:url value="/resources/css/daterangepicker/daterangepicker-bs3.css" />"
+	rel="stylesheet" type="text/css" />
+<!-- bootstrap wysihtml5 - text editor -->
+<link
+	href="<c:url value="/resources/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" />"
+	rel="stylesheet" type="text/css" />
 <!-- Theme style -->
 <link href="<c:url value="/resources/css/AdminLTE.css" />"
 	rel="stylesheet" type="text/css" />
-
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>

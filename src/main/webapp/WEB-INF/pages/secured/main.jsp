@@ -1,50 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" session="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Eylem Tabanlı Algılama</title>
-<meta
-	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
-	name='viewport'>
-<!-- bootstrap 3.0.2 -->
-<link href="<c:url value="/resources/css/bootstrap.min.css" />"
-	rel="stylesheet" type="text/css" />
-<!-- font Awesome -->
-<link href="<c:url value="/resources/css/font-awesome.min.css" />"
-	rel="stylesheet" type="text/css" />
-<!-- Ionicons -->
-<link href="<c:url value="/resources/css/ionicons.min.css" />"
-	rel="stylesheet" type="text/css" />
-<!-- Morris chart -->
-<link href="<c:url value="/resources/css/morris/morris.css" />"
-	rel="stylesheet" type="text/css" />
-<!-- jvectormap -->
-<link
-	href="<c:url value="/resources/css/jvectormap/jquery-jvectormap-1.2.2.css" />"
-	rel="stylesheet" type="text/css" />
-<!-- Date Picker -->
-<link href="<c:url value="/resources/css/datepicker/datepicker3.css" />"
-	rel="stylesheet" type="text/css" />
-<!-- Daterange picker -->
-<link
-	href="<c:url value="/resources/css/daterangepicker/daterangepicker-bs3.css" />"
-	rel="stylesheet" type="text/css" />
-<!-- bootstrap wysihtml5 - text editor -->
-<link
-	href="<c:url value="/resources/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" />"
-	rel="stylesheet" type="text/css" />
-<!-- Theme style -->
-<link href="<c:url value="/resources/css/AdminLTE.css" />"
-	rel="stylesheet" type="text/css" />
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-</head>
+<jsp:include page="../include/head.jsp" />
 <body class="skin-blue">
 	<!-- header logo: style can be found in header.less -->
 	<jsp:include page="../include/header.jsp" />
@@ -67,154 +27,19 @@
 
 			<!-- Main content -->
 			<section class="content">
-
-				<!-- Small boxes (Stat box) -->
-				<div class="row">
-					<div class="col-lg-6 col-xs-8">
-						<!-- small box -->
-						<div class="small-box bg-aqua">
-							<div class="inner">
-								<h3>${totalUserCount}</h3>
-								<p>cihaz aktif</p>
-							</div>
-							<div class="icon">
-								<i class="ion ion-bag"></i>
-							</div>
-							<a href="#" class="small-box-footer"> Detay <i
-								class="fa fa-arrow-circle-right"></i>
-							</a>
-						</div>
-					</div>
-					<!-- ./col -->
-					<div class="col-lg-6 col-xs-8">
-						<!-- small box -->
-						<div class="small-box bg-yellow">
-							<div class="inner">
-								<h3>${onlineUserCount}</h3>
-								<p>kullanıcı çevrimiçi</p>
-							</div>
-							<div class="icon">
-								<i class="ion ion-person-add"></i>
-							</div>
-							<a href="#" class="small-box-footer"> Detay <i
-								class="fa fa-arrow-circle-right"></i>
-							</a>
-						</div>
-					</div>
-					<!-- ./col -->
-
-				</div>
-				<!-- /.row -->
-
-				<!-- Main row -->
-				<div class="row">
-					<div class="col-xs-12">
-						<div class="box">
-							<div class="box-header">
-								<h3 class="box-title">Aktif Kullanıcılar</h3>
-							</div>
-							<!-- /.box-header -->
-							<div class="box-body table-responsive">
-								<table id="users" class="table table-bordered table-striped">
-									<thead>
-										<tr>
-											<th>İsim</th>
-											<th>Soyisim</th>
-											<th>Çevrimiçi</th>
-											<th>Yaş</th>
-											<th>Cihaz detayı</th>
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach items="${users}" var="user">
-											<tr>
-												<td>${user.userName}</td>
-												<td>${user.lastName}</td>
-												<td>${user.isOnline}</td>
-												<td>${user.age}</td>
-												<td><a href="device/${user.userName}">Detay</a></td>
-											</tr>
-										</c:forEach>
-								</table>
-							</div>
-							<!-- /.box-body -->
-						</div>
-						<!-- /.box -->
-					</div>
-				</div>
-				<!-- /.row (main row) -->
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<jsp:include page="admin.jsp" />
+				</sec:authorize>
+				<sec:authorize access="hasRole('ROLE_USER')">
+					<jsp:include page="user.jsp" />
+				</sec:authorize>
 			</section>
 			<!-- /.content -->
 		</aside>
 		<!-- /.right-side -->
 	</div>
 	<!-- ./wrapper -->
-
-	<!-- add new calendar event modal -->
-
-
-	<!-- jQuery 2.0.2 -->
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-	<!-- jQuery UI 1.10.3 -->
-	<script src="<c:url value="/resources/js/jquery-ui-1.10.3.min.js" />"
-		type="text/javascript" type="text/javascript"></script>
-	<!-- Bootstrap -->
-	<script src="<c:url value="/resources/js/bootstrap.min.js" />"
-		type="text/javascript"></script>
-	<!-- Morris.js charts -->
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-	<script
-		src="<c:url value="/resources/js/plugins/morris/morris.min.js" />"
-		type="text/javascript"></script>
-	<!-- Sparkline -->
-	<script
-		src="<c:url value="/resources/js/plugins/sparkline/jquery.sparkline.min.js" />"
-		type="text/javascript"></script>
-	<!-- jvectormap -->
-	<script
-		src="<c:url value="/resources/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" />"
-		type="text/javascript"></script>
-	<script
-		src="<c:url value="/resources/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" />"
-		type="text/javascript"></script>
-	<!-- jQuery Knob Chart -->
-	<script
-		src="<c:url value="/resources/js/plugins/jqueryKnob/jquery.knob.js" />"
-		type="text/javascript"></script>
-	<!-- daterangepicker -->
-	<script
-		src="<c:url value="/resources/js/plugins/daterangepicker/daterangepicker.js" />"
-		type="text/javascript"></script>
-	<!-- datepicker -->
-	<script
-		src="<c:url value="/resources/js/plugins/datepicker/bootstrap-datepicker.js" />"
-		type="text/javascript"></script>
-	<!-- Bootstrap WYSIHTML5 -->
-	<script
-		src="<c:url value="/resources/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" />"
-		type="text/javascript"></script>
-	<!-- iCheck -->
-	<script
-		src="<c:url value="/resources/js/plugins/iCheck/icheck.min.js" />"
-		type="text/javascript"></script>
-
-	<!-- AdminLTE App -->
-	<script src="<c:url value="/resources/js/AdminLTE/app.js" />"
-		type="text/javascript"></script>
-
-	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-	<script src="<c:url value="/resources/js/AdminLTE/dashboard.js" />"
-		type="text/javascript"></script>
-
-	<!-- DATA TABES SCRIPT -->
-	<script
-		src="<c:url value="/resources/js/plugins/datatables/jquery.dataTables.js" />"
-		type="text/javascript"></script>
-	<script
-		src="<c:url value="/resources/js/plugins/datatables/dataTables.bootstrap.js" />"
-		type="text/javascript"></script>
+	<jsp:include page="../include/footer.jsp" />
 
 	<script type="text/javascript">
 		$(function() {
@@ -230,6 +55,169 @@
 		});
 	</script>
 
+
+	<!-- FLOT CHARTS -->
+	<script
+		src="<c:url value="/resources/js/plugins/flot/jquery.flot.min.js" />"
+		type="text/javascript"></script>
+	<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+	<script
+		src="<c:url value="/resources/js/plugins/flot/jquery.flot.resize.min.js" />"
+		type="text/javascript"></script>
+	<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+	<script
+		src="<c:url value="/resources/js/plugins/flot/jquery.flot.pie.min.js" />"
+		type="text/javascript"></script>
+	<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
+	<script
+		src="<c:url value="/resources/js/plugins/flot/jquery.flot.categories.min.js" />"
+		type="text/javascript"></script>
+    
+    <script src="<c:url value="/resources/js/plugins/timepicker/bootstrap-timepicker.min.js" />" type="text/javascript"></script>
+    
+      <script type="text/javascript">
+            $(function() {
+
+                //Date range picker
+                $('#reservation').daterangepicker();
+                //Date range picker with time picker
+                $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
+                //Date range picker with time picker
+                $('#donuttime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
+                
+                //Date range as a button
+                $('#daterange-btn').daterangepicker(
+                        {
+                            ranges: {
+                                'Today': [moment(), moment()],
+                                'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
+                                'Last 7 Days': [moment().subtract('days', 6), moment()],
+                                'Last 30 Days': [moment().subtract('days', 29), moment()],
+                                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                                'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
+                            },
+                            startDate: moment().subtract('days', 29),
+                            endDate: moment()
+                        },
+                function(start, end) {
+                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                }
+                );
+                //Timepicker
+                $(".timepicker").timepicker({
+                    showInputs: false
+                });
+            });
+        </script>
+    
+	<!-- Page script -->
+	<script type="text/javascript">
+		$(function() {
+
+			/*
+			 * Custom Label formatter
+			 * ----------------------
+			 */
+			function labelFormatter(label, series) {
+				return "<div style='font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;'>"
+						+ label
+						+ "<br/>"
+						+ Math.round(series.percent)
+						+ "%</div>";
+			}
+
+			/*
+			 * BAR CHART
+			 * ---------
+			 */
+			Morris.Bar({
+				element : 'bar-chart',
+				data : [ {
+					y : '2006',
+					a : 100,
+					b : 90,
+					c : 10
+				}, {
+					y : '2007',
+					a : 75,
+					b : 65,
+					c : 10
+				}, {
+					y : '2008',
+					a : 50,
+					b : 40,
+					c : 10
+				}, {
+					y : '2009',
+					a : 75,
+					b : 65,
+					c : 10
+				}, {
+					y : '2010',
+					a : 50,
+					b : 40,
+					c : 10
+				}, {
+					y : '2011',
+					a : 75,
+					b : 65,
+					c : 10
+				}, {
+					y : '2012',
+					a : 100,
+					b : 90,
+					c : 10
+				} ],
+				xkey : 'y',
+				ykeys : [ 'a', 'b', 'c' ],
+				labels : [ 'Sabit', 'Bisikletli', 'Yürüyor' ]
+			});
+
+			/* END BAR CHART */
+
+			/*
+			 * DONUT CHART
+			 * -----------
+			 */
+
+			var donutData = [ {
+				label : "Yürüyor",
+				data : 30,
+				color : "#4da74d"
+			}, {
+				label : "Bisikletli",
+				data : 20,
+				color : "#7a92a3"
+			}, {
+				label : "Sabit",
+				data : 50,
+				color : "#0b62a4"
+			} ];
+			$.plot("#donut-chart", donutData, {
+				series : {
+					pie : {
+						show : true,
+						radius : 1,
+						innerRadius : 0.5,
+						label : {
+							show : true,
+							radius : 2 / 3,
+							formatter : labelFormatter,
+							threshold : 0.1
+						}
+
+					}
+				},
+				legend : {
+					show : false
+				}
+			});
+			/*
+			 * END DONUT CHART
+			 */
+
+		});
+	</script>
 
 </body>
 </html>

@@ -1,5 +1,8 @@
 package tr.edu.gsu.peralab.mobilesensing.web.dao.impl;
 
+import java.sql.Timestamp;
+import java.util.List;
+
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 
@@ -8,6 +11,7 @@ import tr.edu.gsu.peralab.mobilesensing.web.dao.DeviceDAO;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.JDBCBaseDAO;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.rowmapper.LocationRowMapper;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.rowmapper.UserRowMapper;
+import tr.edu.gsu.peralab.mobilesensing.web.entity.Activity;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Location;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.User;
@@ -64,6 +68,19 @@ public class DeviceDAOImpl extends JDBCBaseDAO implements DeviceDAO {
 			logger.warn(e);
 		}
 		return location;
+	}
+
+	@Override
+	public List<Activity> retrieveUserActivity(String userName,
+			Timestamp startTime, Timestamp endTime) {
+		User user = (User) getJdbcTemplate().queryForObject(
+				SQLQuery.GET_USER_BY_USERNAME.getValue(),
+				new Object[] { userName }, new UserRowMapper());
+
+		String activityQuery = "SELECT act FROM mobilesensing.actfeaturesdata"
+				+ "_" + userName + "_" + user.getUserId() + "  WHERE time >= ? and time <= ?";
+		
+		return null;
 	}
 
 }

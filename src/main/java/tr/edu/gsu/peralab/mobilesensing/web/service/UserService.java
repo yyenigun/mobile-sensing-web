@@ -16,13 +16,17 @@
 
 package tr.edu.gsu.peralab.mobilesensing.web.service;
 
+import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tr.edu.gsu.peralab.mobilesensing.web.dao.DeviceDAO;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.UserDAO;
+import tr.edu.gsu.peralab.mobilesensing.web.entity.Activity;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Location;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.User;
@@ -86,6 +90,31 @@ public class UserService {
 	 */
 	public Location retrieveLocationInformation(String userName) {
 		return deviceDAO.retriveDeviceLocation(userName);
+	}
+
+	/**
+	 * @param userName
+	 * @return Related user's activity percentage (example BICYCLE = 10%,
+	 *         RUNNING=20%)
+	 */
+	public Map<Activity, Integer> retrieveActivityPercentages(String userName,
+			Timestamp startTime, Timestamp endTime) {
+		List<Activity> userActivities = deviceDAO.retrieveUserActivity(
+				userName, startTime, endTime);
+		Map<Activity, Integer> activityPercentages = new HashMap<Activity, Integer>();
+		int totalActivityNumber = 0;
+		for (Activity activity : userActivities) {
+			totalActivityNumber++;
+			if (activityPercentages.get(activity) == null) {
+				activityPercentages.put(activity,
+						(1 / totalActivityNumber) * 100);
+			} else {
+				activityPercentages
+						.put(activity,
+								((activityPercentages.get(activity) + 1) / totalActivityNumber) / 100);
+			}
+		}
+		return activityPercentages;
 	}
 
 }

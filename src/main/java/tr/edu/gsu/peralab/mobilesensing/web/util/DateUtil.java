@@ -13,10 +13,13 @@ public class DateUtil {
 
 	public static Timestamp convertDbDateToTimestamp(String dbDate)
 			throws ParseException {
-		Date date = new SimpleDateFormat("dd-MM-yyy_H:mm:ss").parse(dbDate);
+		Date date = new SimpleDateFormat("dd.MM.yyyy_H:mm:ss").parse(dbDate);
 		Timestamp timestamp = new Timestamp(date.getTime());
 		return timestamp;
-
+	}
+	
+	public static String convertTimestampToDbDate(Timestamp timestamp){
+		return new SimpleDateFormat("dd.MM.yyyy_H:mm:ss").format(timestamp);
 	}
 
 }

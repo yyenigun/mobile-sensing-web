@@ -116,5 +116,7 @@
 		}
 		google.maps.event.addDomListener(window, 'load', init_map);
 	</script>
+	<script src="<c:url value="/resources/js/AdminLTE/dashboard.js" />"
+		type="text/javascript"></script>
 </body>
 </html>

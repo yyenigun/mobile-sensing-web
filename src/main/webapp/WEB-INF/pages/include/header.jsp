@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <header class="header">
-	<a href="indexPage" class="logo"> <!-- Add the class icon to your logo image or logo icon to add the margining -->
+	<a href="${pageContext.request.contextPath}/indexPage" class="logo"> <!-- Add the class icon to your logo image or logo icon to add the margining -->
 		Eylem Tabanlı Algılama
 	</a>
 	<!-- Header Navbar: style can be found in header.less -->

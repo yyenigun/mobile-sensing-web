@@ -30,7 +30,7 @@
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 					<jsp:include page="admin.jsp" />
 				</sec:authorize>
-				<sec:authorize access="hasRole('ROLE_USER')">
+				<sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
 					<jsp:include page="user.jsp" />
 				</sec:authorize>
 			</section>

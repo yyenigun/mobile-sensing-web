@@ -57,3 +57,8 @@
 <script
 	src="<c:url value="/resources/js/plugins/datatables/dataTables.bootstrap.js" />"
 	type="text/javascript"></script>
+	
+	<!-- AdminLTE App -->
+<script src="<c:url value="/resources/js/AdminLTE/app.js" />"
+	type="text/javascript"></script>
+	

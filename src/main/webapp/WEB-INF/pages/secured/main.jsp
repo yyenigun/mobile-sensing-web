@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	
 <!DOCTYPE html>
 <html>
 <jsp:include page="../include/head.jsp" />
@@ -99,34 +101,6 @@
 			    endDate: '12/31/2013 11:12:32'
 			});
 			$("#donuttime").val("${defaultStartTime} - ${defaultEndTime}");
-
-			//Date range as a button
-			$('#daterange-btn').daterangepicker(
-					{
-						ranges : {
-							'Today' : [ moment(), moment() ],
-							'Yesterday' : [ moment().subtract('days', 1),
-									moment().subtract('days', 1) ],
-							'Last 7 Days' : [ moment().subtract('days', 6),
-									moment() ],
-							'Last 30 Days' : [ moment().subtract('days', 29),
-									moment() ],
-							'This Month' : [ moment().startOf('month'),
-									moment().endOf('month') ],
-							'Last Month' : [
-									moment().subtract('month', 1).startOf(
-											'month'),
-									moment().subtract('month', 1)
-											.endOf('month') ]
-						},
-						startDate : moment().subtract('days', 29),
-						endDate : moment()
-					},
-					function(start, end) {
-						$('#reportrange span').html(
-								start.format('MMMM D, YYYY') + ' - '
-										+ end.format('MMMM D, YYYY'));
-					});
 		});
 	</script>
 
@@ -140,45 +114,38 @@
 			 */
 			Morris.Bar({
 				element : 'bar-chart',
-				data : [ {
-					y : '2006',
-					a : 100,
-					b : 90,
-					c : 10
-				}, {
-					y : '2007',
-					a : 75,
-					b : 65,
-					c : 10
-				}, {
-					y : '2008',
-					a : 50,
-					b : 40,
-					c : 10
-				}, {
-					y : '2009',
-					a : 75,
-					b : 65,
-					c : 10
-				}, {
-					y : '2010',
-					a : 50,
-					b : 40,
-					c : 10
-				}, {
-					y : '2011',
-					a : 75,
-					b : 65,
-					c : 10
-				}, {
-					y : '2012',
-					a : 100,
-					b : 90,
-					c : 10
-				} ],
+				
+				data: [
+						<c:forEach items="${monthlyActivityMap}" var="monthlyActivityEntry">
+							{
+								<fmt:formatDate value="${monthlyActivityEntry.key}" var="dateString" pattern="MMM" />
+								y : '${dateString}',
+									<c:forEach items="${monthlyActivityEntry.value}" var="monthlyEntry">
+								    	<c:if test="${not empty monthlyEntry}">
+								    		${monthlyEntry.key} : ${monthlyEntry.value},
+										</c:if>
+									</c:forEach>
+							},
+						</c:forEach>
+	                 ],
 				xkey : 'y',
-				ykeys : [ 'a', 'b', 'c' ],
-				labels : [ 'Sabit', 'Bisikletli', 'Yürüyor' ]
+				ykeys : [ <c:forEach items="${monthlyActivityMap}" var="monthlyActivityEntry">
+							<c:forEach items="${monthlyActivityEntry.value}" var="monthlyEntry">
+								<c:if test="${not empty monthlyEntry}">
+									'${monthlyEntry.key}',
+								</c:if>
+						    </c:forEach>
+						  </c:forEach> 
+				        ],
+				labels : [ 
+						<c:forEach items="${monthlyActivityMap}" var="monthlyActivityEntry">
+							<c:forEach items="${monthlyActivityEntry.value}" var="monthlyEntry">
+								<c:if test="${not empty monthlyEntry}">
+								'${monthlyEntry.key.label}',
+								</c:if>
+							</c:forEach>
+						</c:forEach> 
+				  		  ]
 			});
 
 			/* END BAR CHART */

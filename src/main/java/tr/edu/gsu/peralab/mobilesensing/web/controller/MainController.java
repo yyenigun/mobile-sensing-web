@@ -1,10 +1,10 @@
 package tr.edu.gsu.peralab.mobilesensing.web.controller;
 
 import java.security.Principal;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +39,11 @@ public class MainController {
 		Map<Activity, Double> activityMap = userService
 				.retrieveActivityNumbers(userName, cal.getTimeInMillis(),
 						new Date().getTime());
+		Map<Date, Map<Activity, Double>> monthlyActivityMap = userService.retrieveMonthlyActivityPercentage(userName);
 		model.addAttribute("activityMap", activityMap);
 		model.addAttribute("defaultStartTime", new SimpleDateFormat("MM/dd/YYYY h:mm a").format(cal.getTime()));
 		model.addAttribute("defaultEndTime", new SimpleDateFormat("MM/dd/YYYY h:mm a").format(new Date()));
+		model.addAttribute("monthlyActivityMap", monthlyActivityMap);
 		return "secured/main";
 	}
 

@@ -16,10 +16,12 @@
 
 package tr.edu.gsu.peralab.mobilesensing.web.service;
 
-import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -94,6 +96,8 @@ public class UserService {
 
 	/**
 	 * @param userName
+	 * @param startTime
+	 * @param endTime
 	 * @return Related user's activity percentage (example BICYCLE = 10%,
 	 *         RUNNING=20%)
 	 */
@@ -115,6 +119,28 @@ public class UserService {
 					.getValue() / userActivities.size()) * 100) * 100) / 100);
 		}
 		return activityNumbers;
+	}
+
+	/**
+	 * @param userName
+	 * @return Monthly user activity percentage
+	 */
+	public Map<Date, Map<Activity, Double>> retrieveMonthlyActivityPercentage(
+			String userName) {
+		Map<Date, Map<Activity, Double>> monthlyActivityMap = new TreeMap<Date, Map<Activity, Double>>();
+		for (int i = 0; i < 6; i++) {
+			Calendar startTime = Calendar.getInstance();
+			startTime.add(Calendar.MONTH, -i);
+			Calendar endTime = Calendar.getInstance();
+			endTime.add(Calendar.MONTH, 1 - i);
+			Map<Activity, Double> activityMapPerMonth = retrieveActivityNumbers(
+					userName, startTime.getTimeInMillis(),
+					endTime.getTimeInMillis());
+			monthlyActivityMap.put(
+					startTime.getTime(),
+					activityMapPerMonth);
+		}
+		return monthlyActivityMap;
 	}
 
 }

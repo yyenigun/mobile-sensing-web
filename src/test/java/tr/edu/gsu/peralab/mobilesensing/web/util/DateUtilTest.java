@@ -11,20 +11,20 @@ public class DateUtilTest {
 	
 	@Test
 	public void testParseDateSuccess() throws ParseException{
-		Timestamp timeStamp = DateUtil.convertDbDateToTimestamp("08.08.2014_12:54:16");
-		assertEquals(1407491656000L, timeStamp.getTime());
+		long time = DateUtil.convertDbDateToTimestamp("2014-08-08 12:54:16");
+		assertEquals(1407491656000L, time);
 	}
 	
 	@Test(expected=ParseException.class)
 	public void testParseDateFail() throws ParseException{
-		Timestamp timeStamp = DateUtil.convertDbDateToTimestamp("08-08-2014_12:54:16");
-		assertEquals(1407491656000L, timeStamp.getTime());
+		long time = DateUtil.convertDbDateToTimestamp("2014-08-08-12:54:16");
+		assertEquals(1407491656000L, time);
 	}
 	
 	@Test
 	public void testTimestampToStringSuccess() throws ParseException{
-		String formattedDate = DateUtil.convertTimestampToDbDate(new Timestamp(1407491656000L));
-		assertEquals("08.08.2014_12:54:16", formattedDate);
+		String formattedDate = DateUtil.convertTimestampToDbDate(1407491656000L);
+		assertEquals("2014-08-08 12:54:16", formattedDate);
 	}
 
 }

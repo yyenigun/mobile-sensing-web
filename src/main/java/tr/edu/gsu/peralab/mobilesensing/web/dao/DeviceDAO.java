@@ -50,6 +50,6 @@ public interface DeviceDAO {
 	 * @param endTime
 	 * @return User's activity list (Bicycle, Stationary, Walking..etc.) between start time and end time
 	 */
-	List<Activity> retrieveUserActivity(String userName, Timestamp startTime, Timestamp endTime);
+	List<Activity> retrieveUserActivity(String userName, long startTime, long endTime);
 
 }

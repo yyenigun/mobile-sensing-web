@@ -18,7 +18,7 @@
 							<i class="fa fa-clock-o"></i>
 						</div>
 						<input type="text" class="form-control pull-right"
-							id="reservationtime" />
+							id="bartime" />
 					</div>
 					<!-- /.input group -->
 				</div>

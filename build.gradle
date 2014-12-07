@@ -2,7 +2,6 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'eclipse'
 apply plugin: 'eclipse-wtp'
-apply plugin: 'sonar-runner'
 
 sourceCompatibility = '1.6'
 targetCompatibility = '1.6'
@@ -54,6 +53,7 @@ dependencies {
 	compile "org.springframework.security:spring-security-taglibs:$springVersion"
 	compile 'org.apache.commons:commons-lang3:3.2.1'
 	compile 'javax.inject:javax.inject:1'
+	compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
 	compile 'mysql:mysql-connector-java:5.1.6'
 	providedCompile 'javax.servlet:servlet-api:2.5'
 	providedCompile 'javax.servlet.jsp:jsp-api:2.1'

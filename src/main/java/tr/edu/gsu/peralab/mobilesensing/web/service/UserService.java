@@ -97,24 +97,24 @@ public class UserService {
 	 * @return Related user's activity percentage (example BICYCLE = 10%,
 	 *         RUNNING=20%)
 	 */
-	public Map<Activity, Integer> retrieveActivityPercentages(String userName,
-			Timestamp startTime, Timestamp endTime) {
+	public Map<Activity, Double> retrieveActivityNumbers(String userName,
+			long startTime, long endTime) {
 		List<Activity> userActivities = deviceDAO.retrieveUserActivity(
 				userName, startTime, endTime);
-		Map<Activity, Integer> activityPercentages = new HashMap<Activity, Integer>();
-		int totalActivityNumber = 0;
+		Map<Activity, Double> activityNumbers = new HashMap<Activity, Double>();
 		for (Activity activity : userActivities) {
-			totalActivityNumber++;
-			if (activityPercentages.get(activity) == null) {
-				activityPercentages.put(activity,
-						(1 / totalActivityNumber) * 100);
+			if (activityNumbers.get(activity) == null) {
+				activityNumbers.put(activity, 1.0);
 			} else {
-				activityPercentages
-						.put(activity,
-								((activityPercentages.get(activity) + 1) / totalActivityNumber) / 100);
+				activityNumbers
+						.put(activity, activityNumbers.get(activity) + 1);
 			}
 		}
-		return activityPercentages;
+		for (Map.Entry<Activity, Double> entry : activityNumbers.entrySet()) {
+			activityNumbers.put(entry.getKey(), (double) Math.round(((entry
+					.getValue() / userActivities.size()) * 100) * 100) / 100);
+		}
+		return activityNumbers;
 	}
 
 }

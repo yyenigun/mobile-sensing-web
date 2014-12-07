@@ -64,7 +64,7 @@ public class DeviceDAOImpl extends JDBCBaseDAO implements DeviceDAO {
 		try {
 			String locationQuery = "SELECT provider,latitude, longitude FROM mobilesensing.locationinfodata"
 					+ "_" + userName + "_" + user.getUserId();
-		    location = (Location) getJdbcTemplate().queryForObject(
+			location = (Location) getJdbcTemplate().queryForObject(
 					locationQuery + " ORDER BY time DESC LIMIT 1",
 					new LocationRowMapper());
 		} catch (EmptyResultDataAccessException e) {
@@ -74,8 +74,8 @@ public class DeviceDAOImpl extends JDBCBaseDAO implements DeviceDAO {
 	}
 
 	@Override
-	public List<Activity> retrieveUserActivity(String userName,
-			Timestamp startTime, Timestamp endTime) {
+	public List<Activity> retrieveUserActivity(String userName, long startTime,
+			long endTime) {
 		List<Activity> activities = new ArrayList<Activity>();
 		User user = (User) getJdbcTemplate().queryForObject(
 				SQLQuery.GET_USER_BY_USERNAME.getValue(),
@@ -83,12 +83,21 @@ public class DeviceDAOImpl extends JDBCBaseDAO implements DeviceDAO {
 
 		String startTimeStr = DateUtil.convertTimestampToDbDate(startTime);
 		String endTimeStr = DateUtil.convertTimestampToDbDate(endTime);
-		String activityQuery = "SELECT act FROM mobilesensing.actfeaturesdata"
-				+ "_" + userName + "_" + user.getUserId() + "  WHERE time >= ? and time <= ?";
-		
-		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(activityQuery, new Object[]{startTimeStr, endTimeStr});
+
+		String activityQuery = "SELECT actfeatures.act FROM mobilesensing.actfeaturesdata"
+				+ "_"
+				+ userName
+				+ "_"
+				+ user.getUserId()
+				+ " actfeatures  WHERE  STR_TO_DATE(actfeatures.time, '%d.%m.%Y_%H:%i:%s') >= '"
+				+ startTimeStr
+				+ "' AND STR_TO_DATE(actfeatures.time, '%d.%m.%Y_%H:%i:%s') <= '"
+				+ endTimeStr + "'";
+
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(
+				activityQuery);
 		for (Map<String, Object> row : rows) {
-			activities.add(Activity.valueOf((String)row.get("act")));
+			activities.add(Activity.valueOf((String) row.get("act")));
 		}
 		return activities;
 	}

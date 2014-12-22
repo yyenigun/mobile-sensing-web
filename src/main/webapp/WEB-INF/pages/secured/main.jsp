@@ -3,8 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-	
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <jsp:include page="../include/head.jsp" />
@@ -90,22 +90,15 @@
 				format : 'MM/DD/YYYY h:mm A',
 				startDate: '12/23/2013 11:12:32',
 			    endDate: '12/31/2013 11:12:32'
-			});
+			}, barChartCallBack);
 			$("#bartime").val("${defaultStartTime} - ${defaultEndTime}");
-			//Date range picker with time picker
-			$('#donuttime').daterangepicker({
-				timePicker : true,
-				timePickerIncrement : 30,
-				format : 'MM/DD/YYYY h:mm A',
-				startDate: '12/23/2013 11:12:32',
-			    endDate: '12/31/2013 11:12:32'
-			});
-			$("#donuttime").val("${defaultStartTime} - ${defaultEndTime}");
-		});
-	</script>
+			
+			function barChartCallBack(start, end) {
+				
+			}
 
-	<!-- Page script -->
-	<script type="text/javascript">
+
+
 		$(function() {
 
 			/*
@@ -141,7 +134,7 @@
 						<c:forEach items="${monthlyActivityMap}" var="monthlyActivityEntry">
 							<c:forEach items="${monthlyActivityEntry.value}" var="monthlyEntry">
 								<c:if test="${not empty monthlyEntry}">
-								'${monthlyEntry.key.label}',
+								'${monthlyEntry.key}',
 								</c:if>
 							</c:forEach>
 						</c:forEach> 
@@ -160,7 +153,7 @@
                  data: [
             		<c:forEach items="${activityMap}" var="entry">
             			{
-            				label : "${entry.key.label}",
+            				label : "${entry.key}",
             				value :  ${entry.value}
             			},			    
             		</c:forEach>
@@ -172,9 +165,44 @@
 			/*
 			 * END DONUT CHART
 			 */
+        	
+			function donutChartCallBack(start, end) {
+				var json = { "userName" : "${pageContext.request.userPrincipal.name}", "startTime" : start.format('YYYY-MM-DD H:mm:ss'), "endTime": end.format('YYYY-MM-DD H:mm:ss')};
+		        $.ajax({
+		            url : '${pageContext.request.contextPath}/secured/main/activities',
+		            type: 'POST',
+		            beforeSend: function(xhr) {
+		                xhr.setRequestHeader("Accept", "application/json");
+		                xhr.setRequestHeader("Content-Type", "application/json");
+		            },
+		            data: JSON.stringify(json),
+		            success : function(data) {
+		            	var testData = [];
+		            	$.each(data, function(outerKey, outerValue){
+		            		var line = {label : String(outerKey),value :  outerValue}
+		            		testData.push(line);
+		            	});
+		            	donut.setData(testData);
+		            },
+		            error: function(result) {
+		            	console.log(result);
+		            }
+		        });
+			}
+			//Date range picker with time picker
+			$('#donuttime').daterangepicker({
+				timePicker : true,
+				timePickerIncrement : 30,
+				format : 'MM/DD/YYYY h:mm A',
+				startDate: '${defaultStartTime}',
+			    endDate: '${defaultEndTime}'
+			}, donutChartCallBack);
+			$("#donuttime").val("${defaultStartTime} - ${defaultEndTime}");
+
+		});
 
 		});
 	</script>
-
+	<div id="result"></div>
 </body>
 </html>

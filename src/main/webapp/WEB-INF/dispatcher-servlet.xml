@@ -21,6 +21,8 @@
 	<mvc:annotation-driven />
 
 	<context:annotation-config />
+	
+	
 
 	<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
 

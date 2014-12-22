@@ -1,6 +1,8 @@
 package tr.edu.gsu.peralab.mobilesensing.web.entity;
 
-public enum Activity {
+import java.io.Serializable;
+
+public enum Activity implements Serializable {
 
 	Bicycle("Bisikletli"), Walking("Yürüyor"), Stationary("Hareketsiz"), Neither("Hiçbiri"), Chilling("Titriyor");
 	

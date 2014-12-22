@@ -26,5 +26,12 @@ public class DateUtilTest {
 		String formattedDate = DateUtil.convertTimestampToDbDate(1407491656000L);
 		assertEquals("2014-08-08 12:54:16", formattedDate);
 	}
+	
+	@Test
+	public void testJSONTimeSuccess() throws ParseException{
+		long time = DateUtil.retriveJsonTimeValue("2014-08-08 12:54:16");
+		assertEquals(1407491656000L, time);
+	}
+
 
 }

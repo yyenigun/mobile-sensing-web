@@ -19,5 +19,10 @@ public class DateUtil {
 	public static String convertTimestampToDbDate(long timestamp){
 		return new SimpleDateFormat("yyyy-MM-dd H:mm:ss").format(timestamp);
 	}
+	
+	public static Long retriveJsonTimeValue(String jsonTime) throws ParseException{
+		Date date = new SimpleDateFormat("yyyy-MM-dd H:mm:ss").parse(jsonTime);
+		return date.getTime();
+	}
 
 }

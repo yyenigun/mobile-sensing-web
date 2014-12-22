@@ -1,16 +1,18 @@
 package tr.edu.gsu.peralab.mobilesensing.web.controller;
 
 import java.security.Principal;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,7 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Activity;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Location;
+import tr.edu.gsu.peralab.mobilesensing.web.entity.json.ActivityFilter;
 import tr.edu.gsu.peralab.mobilesensing.web.service.UserService;
+import tr.edu.gsu.peralab.mobilesensing.web.util.DateUtil;
 
 @Controller
 public class MainController {
@@ -36,22 +40,36 @@ public class MainController {
 		model.addAttribute("users", userService.retrieveAllUsers());
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.MONTH, -6);
-		Map<Activity, Double> activityMap = userService
+		Map<String, Double> activityMap = userService
 				.retrieveActivityNumbers(userName, cal.getTimeInMillis(),
 						new Date().getTime());
-		Map<Date, Map<Activity, Double>> monthlyActivityMap = userService.retrieveMonthlyActivityPercentage(userName);
+		Map<Date, Map<String, Double>> monthlyActivityMap = userService
+				.retrieveMonthlyActivityPercentage(userName);
 		model.addAttribute("activityMap", activityMap);
-		model.addAttribute("defaultStartTime", new SimpleDateFormat("MM/dd/YYYY h:mm a").format(cal.getTime()));
-		model.addAttribute("defaultEndTime", new SimpleDateFormat("MM/dd/YYYY h:mm a").format(new Date()));
+		model.addAttribute("defaultStartTime", new SimpleDateFormat(
+				"MM/dd/YYYY h:mm a").format(cal.getTime()));
+		model.addAttribute("defaultEndTime", new SimpleDateFormat(
+				"MM/dd/YYYY h:mm a").format(new Date()));
 		model.addAttribute("monthlyActivityMap", monthlyActivityMap);
 		return "secured/main";
 	}
 
-	@RequestMapping(value = "/secured/main", method = RequestMethod.POST, headers = { "Content-type=application/json" })
+	@RequestMapping(value = "/secured/main/activities", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Map<Activity, Integer> retrieveActivityPercentages(String userName,
-			long startTime, long endTime) {
-		return null;
+	public Map<String, Double> retrieveActivityPercentages(Model model,
+			@RequestBody ActivityFilter activityFilter) {
+		Map<String, Double> activities = null;
+		try {
+			activities = userService.retrieveActivityNumbers(activityFilter
+					.getUserName(), DateUtil
+					.retriveJsonTimeValue(activityFilter.getStartTime()),
+					DateUtil.retriveJsonTimeValue(activityFilter.getEndTime()));
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return activities;
 	}
 
 	@RequestMapping("/secured/device/{username}")

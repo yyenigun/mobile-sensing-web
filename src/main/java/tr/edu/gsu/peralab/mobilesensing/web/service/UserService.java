@@ -101,20 +101,20 @@ public class UserService {
 	 * @return Related user's activity percentage (example BICYCLE = 10%,
 	 *         RUNNING=20%)
 	 */
-	public Map<Activity, Double> retrieveActivityNumbers(String userName,
+	public Map<String, Double> retrieveActivityNumbers(String userName,
 			long startTime, long endTime) {
 		List<Activity> userActivities = deviceDAO.retrieveUserActivity(
 				userName, startTime, endTime);
-		Map<Activity, Double> activityNumbers = new HashMap<Activity, Double>();
+		Map<String, Double> activityNumbers = new HashMap<String, Double>();
 		for (Activity activity : userActivities) {
-			if (activityNumbers.get(activity) == null) {
-				activityNumbers.put(activity, 1.0);
+			if (activityNumbers.get(activity.getLabel()) == null) {
+				activityNumbers.put(activity.getLabel(), 1.0);
 			} else {
 				activityNumbers
-						.put(activity, activityNumbers.get(activity) + 1);
+						.put(activity.getLabel(), activityNumbers.get(activity.getLabel()) + 1);
 			}
 		}
-		for (Map.Entry<Activity, Double> entry : activityNumbers.entrySet()) {
+		for (Map.Entry<String, Double> entry : activityNumbers.entrySet()) {
 			activityNumbers.put(entry.getKey(), (double) Math.round(((entry
 					.getValue() / userActivities.size()) * 100) * 100) / 100);
 		}
@@ -125,15 +125,15 @@ public class UserService {
 	 * @param userName
 	 * @return Monthly user activity percentage
 	 */
-	public Map<Date, Map<Activity, Double>> retrieveMonthlyActivityPercentage(
+	public Map<Date, Map<String, Double>> retrieveMonthlyActivityPercentage(
 			String userName) {
-		Map<Date, Map<Activity, Double>> monthlyActivityMap = new TreeMap<Date, Map<Activity, Double>>();
+		Map<Date, Map<String, Double>> monthlyActivityMap = new TreeMap<Date, Map<String, Double>>();
 		for (int i = 0; i < 6; i++) {
 			Calendar startTime = Calendar.getInstance();
 			startTime.add(Calendar.MONTH, -i);
 			Calendar endTime = Calendar.getInstance();
 			endTime.add(Calendar.MONTH, 1 - i);
-			Map<Activity, Double> activityMapPerMonth = retrieveActivityNumbers(
+			Map<String, Double> activityMapPerMonth = retrieveActivityNumbers(
 					userName, startTime.getTimeInMillis(),
 					endTime.getTimeInMillis());
 			monthlyActivityMap.put(

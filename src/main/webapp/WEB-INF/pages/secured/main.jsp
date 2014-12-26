@@ -81,31 +81,13 @@
 		type="text/javascript"></script>
 
 	<script type="text/javascript">
-		$(function() {
-
-			//Date range picker with time picker
-			$('#bartime').daterangepicker({
-				timePicker : true,
-				timePickerIncrement : 30,
-				format : 'MM/DD/YYYY h:mm A',
-				startDate: '12/23/2013 11:12:32',
-			    endDate: '12/31/2013 11:12:32'
-			}, barChartCallBack);
-			$("#bartime").val("${defaultStartTime} - ${defaultEndTime}");
-			
-			function barChartCallBack(start, end) {
-				
-			}
-
-
 
 		$(function() {
-
 			/*
 			 * BAR CHART
 			 * ---------
 			 */
-			Morris.Bar({
+			var barchart = new Morris.Bar({
 				element : 'bar-chart',
 				
 				data: [
@@ -138,9 +120,52 @@
 								</c:if>
 							</c:forEach>
 						</c:forEach> 
-				  		  ]
+				  		 ]
 			});
-
+			
+            $('#daterange-btn').daterangepicker(
+                    {
+                        ranges: {
+                            'Bugün': [moment().subtract('days', 1), moment()],
+                            'Son 7 Gün': [moment().subtract('days', 6), moment()],
+                            'Son 30 Gün': [moment().subtract('days', 29), moment()],
+                            'Bu Ay': [moment().startOf('month'), moment().endOf('month')],
+                            'Son 6 Ay': [moment().subtract('months', 6).startOf('month'), moment().endOf('month')]
+                        },
+                        startDate: moment().subtract('month', 6),
+                        endDate: moment()
+                    },
+            		function(start, end) {
+        				var json = { "startTime" : start.format('YYYY-MM-DD H:mm:ss'), "endTime": end.format('YYYY-MM-DD H:mm:ss')};
+        		        $.ajax({
+        		            url : '${pageContext.request.contextPath}/secured/main/activityfilter',
+        		            type: 'POST',
+        		            beforeSend: function(xhr) {
+        		                xhr.setRequestHeader("Accept", "application/json");
+        		                xhr.setRequestHeader("Content-Type", "application/json");
+        		            },
+        		            data: JSON.stringify(json),
+        		            success : function(data) {
+        		            	var response = [];
+        		            	var yKeys = [];
+        		            	for (var i = 0; i < data.activityMaps.length; i++) {
+            		            	var yData = {};
+        		            		yData.y = data.activityMaps[i].period;
+        		            	    $.each(data.activityMaps[i].activityMap, function(outerKey, outerValue){
+            		            		yData[outerKey] = outerValue;
+            		            	});
+            		            	response.push(yData);
+        		            	}
+        		            	console.log(data);
+        		            	console.log(response);
+        		            	barchart.setData(response);
+        		            },
+        		            error: function(result) {
+        		            	console.log(result);
+        		            }
+        		        });
+            		}
+            );
 			/* END BAR CHART */
 
 			/*
@@ -167,7 +192,7 @@
 			 */
         	
 			function donutChartCallBack(start, end) {
-				var json = { "userName" : "${pageContext.request.userPrincipal.name}", "startTime" : start.format('YYYY-MM-DD H:mm:ss'), "endTime": end.format('YYYY-MM-DD H:mm:ss')};
+				var json = { "startTime" : start.format('YYYY-MM-DD H:mm:ss'), "endTime": end.format('YYYY-MM-DD H:mm:ss')};
 		        $.ajax({
 		            url : '${pageContext.request.contextPath}/secured/main/activities',
 		            type: 'POST',
@@ -201,8 +226,6 @@
 
 		});
 
-		});
 	</script>
-	<div id="result"></div>
 </body>
 </html>

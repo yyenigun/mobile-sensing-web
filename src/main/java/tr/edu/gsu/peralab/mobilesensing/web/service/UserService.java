@@ -16,13 +16,18 @@
 
 package tr.edu.gsu.peralab.mobilesensing.web.service;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +37,8 @@ import tr.edu.gsu.peralab.mobilesensing.web.entity.Activity;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Location;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.User;
+import tr.edu.gsu.peralab.mobilesensing.web.entity.json.ActivityMapResponse;
+import tr.edu.gsu.peralab.mobilesensing.web.entity.json.ActivityMapResponseList;
 
 /**
  * @author yalcin.yenigun
@@ -110,8 +117,8 @@ public class UserService {
 			if (activityNumbers.get(activity.getLabel()) == null) {
 				activityNumbers.put(activity.getLabel(), 1.0);
 			} else {
-				activityNumbers
-						.put(activity.getLabel(), activityNumbers.get(activity.getLabel()) + 1);
+				activityNumbers.put(activity.getLabel(),
+						activityNumbers.get(activity.getLabel()) + 1);
 			}
 		}
 		for (Map.Entry<String, Double> entry : activityNumbers.entrySet()) {
@@ -136,11 +143,72 @@ public class UserService {
 			Map<String, Double> activityMapPerMonth = retrieveActivityNumbers(
 					userName, startTime.getTimeInMillis(),
 					endTime.getTimeInMillis());
-			monthlyActivityMap.put(
-					startTime.getTime(),
-					activityMapPerMonth);
+			monthlyActivityMap.put(startTime.getTime(), activityMapPerMonth);
 		}
 		return monthlyActivityMap;
 	}
 
+	/**
+	 * @param userName
+	 * @return Monthly user activity percentage
+	 */
+	public ActivityMapResponseList retrieveActivityPercentage(String userName,
+			Long startTimeMillis, Long endTimeMillis) {
+		long hours = (endTimeMillis - startTimeMillis)
+				/ DateUtils.MILLIS_PER_HOUR;
+		ActivityMapResponseList activityMapResponseList = new ActivityMapResponseList();
+		List<ActivityMapResponse> responses = new ArrayList<ActivityMapResponse>();
+		for (int i = 0; i < 6; i++) {
+			ActivityMapResponse response = new ActivityMapResponse();
+			Calendar startTime = Calendar.getInstance();
+			Calendar endTime = Calendar.getInstance();
+			calculatePeriod(hours, i, startTime, endTime, response);
+			Map<String, Double> activityMapPerPeriod = retrieveActivityNumbers(
+					userName, startTime.getTimeInMillis(),
+					endTime.getTimeInMillis());
+			response.setDate(startTime.getTime());
+			response.setActivityMap(activityMapPerPeriod);
+			responses.add(response);
+		}
+		Collections.sort(responses);
+		activityMapResponseList.setActivityMaps(responses);
+		return activityMapResponseList;
+	}
+
+	private void calculatePeriod(long hours, int index, Calendar startTime,
+			Calendar endTime, ActivityMapResponse response) {
+		if (hours <= 1) {
+			startTime.add(Calendar.MINUTE, -(index * 10));
+			endTime.add(Calendar.MONTH, 10 - (index * 10));
+			response.setPeriod(String.valueOf(startTime.get(Calendar.MINUTE)));
+		} else if (hours <= 6) {
+			startTime.add(Calendar.HOUR, -index);
+			endTime.add(Calendar.HOUR, 1 - index);
+			response.setPeriod(String.valueOf(startTime.get(Calendar.HOUR)));
+		} else if (hours <= 24) {
+			SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a",
+					Locale.forLanguageTag("TR"));
+			startTime.add(Calendar.HOUR, -(index * 4));
+			endTime.add(Calendar.HOUR, 4 - (index * 4));
+			response.setPeriod(dateFormat.format(startTime.getTime()) + " - "
+					+ dateFormat.format(endTime.getTime()));
+		} else if (hours <= 144) {
+			startTime.add(Calendar.DAY_OF_MONTH, -index);
+			endTime.add(Calendar.DAY_OF_MONTH, 1 - index);
+			response.setPeriod(new SimpleDateFormat("d MMM", Locale
+					.forLanguageTag("TR")).format(startTime.getTime()));
+		} else if (hours <= 720) {
+			SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM",
+					Locale.forLanguageTag("TR"));
+			startTime.add(Calendar.DAY_OF_MONTH, -((index + 1) * 5));
+			endTime.add(Calendar.DAY_OF_MONTH, 5 - ((-index + 1) * 5));
+			response.setPeriod(dateFormat.format(startTime.getTime()) + " - "
+					+ dateFormat.format(endTime.getTime()));
+		} else {
+			startTime.add(Calendar.MONTH, -index);
+			endTime.add(Calendar.MONTH, 1 - index);
+			response.setPeriod(new SimpleDateFormat("MMM", Locale
+					.forLanguageTag("TR")).format(startTime.getTime()));
+		}
+	}
 }

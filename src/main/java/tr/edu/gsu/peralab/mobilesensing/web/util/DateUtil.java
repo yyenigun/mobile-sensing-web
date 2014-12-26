@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateUtil {
+	
+	public static final Long SIX_MONTHS = 15768000000L;
 
 	private DateUtil() {
 
@@ -24,5 +26,6 @@ public class DateUtil {
 		Date date = new SimpleDateFormat("yyyy-MM-dd H:mm:ss").parse(jsonTime);
 		return date.getTime();
 	}
+
 
 }

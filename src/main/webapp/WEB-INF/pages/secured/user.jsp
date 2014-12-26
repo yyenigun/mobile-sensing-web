@@ -12,13 +12,12 @@
 			</div>
 			<div class="box-body">
 				<div class="form-group">
-					<label>Zaman Aralığı:</label>
 					<div class="input-group">
-						<div class="input-group-addon">
-							<i class="fa fa-clock-o"></i>
-						</div>
-						<input type="text" class="form-control pull-right"
-							id="bartime" />
+						<button class="btn btn-default pull-right" id="daterange-btn">
+							<i class="fa fa-calendar"></i> Zaman Aralığı <i
+								class="fa fa-caret-down"></i>
+						</button>
+						<!-- /btn-group -->
 					</div>
 					<!-- /.input group -->
 				</div>
@@ -42,8 +41,7 @@
 						<div class="input-group-addon">
 							<i class="fa fa-clock-o"></i>
 						</div>
-						<input type="text" class="form-control pull-right"
-							id="donuttime" />
+						<input type="text" class="form-control pull-right" id="donuttime" />
 					</div>
 					<!-- /.input group -->
 				</div>

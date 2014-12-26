@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Location;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.json.ActivityFilter;
-import tr.edu.gsu.peralab.mobilesensing.web.entity.json.ActivityMapResponse;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.json.ActivityMapResponseList;
 import tr.edu.gsu.peralab.mobilesensing.web.service.UserService;
 import tr.edu.gsu.peralab.mobilesensing.web.util.DateUtil;
@@ -30,6 +30,9 @@ public class MainController {
 
 	@Autowired
 	private UserService userService;
+	
+	private static final Logger LOGGER = Logger.getLogger(MainController.class);
+	
 
 	@RequestMapping("/secured/main")
 	public String main(Model model, Principal principal) {
@@ -65,9 +68,9 @@ public class MainController {
 					.getStartTime()), DateUtil
 					.retriveJsonTimeValue(activityFilter.getEndTime()));
 		} catch (NumberFormatException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 		return activities;
 	}
@@ -84,7 +87,7 @@ public class MainController {
 					.getStartTime()), DateUtil
 					.retriveJsonTimeValue(activityFilter.getEndTime()));
 		} catch (ParseException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 		return activityMapResponseList;
 	}

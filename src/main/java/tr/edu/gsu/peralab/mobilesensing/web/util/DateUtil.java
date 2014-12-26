@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DateUtil {
+public final class  DateUtil {
 	
 	public static final Long SIX_MONTHS = 15768000000L;
 

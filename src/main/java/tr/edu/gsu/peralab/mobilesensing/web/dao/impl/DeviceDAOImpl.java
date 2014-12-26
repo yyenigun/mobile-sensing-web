@@ -96,7 +96,7 @@ public class DeviceDAOImpl extends JDBCBaseDAO implements DeviceDAO {
 		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(
 				activityQuery);
 		for (Map<String, Object> row : rows) {
-			activities.add(Activity.valueOf((String) row.get("act")));
+			activities.add(Activity.valueOf(((String) row.get("act")).toUpperCase()));
 		}
 		return activities;
 	}

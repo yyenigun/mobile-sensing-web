@@ -16,6 +16,7 @@
 
 package tr.edu.gsu.peralab.mobilesensing.web.entity;
 
+
 /**
  * @author yalcin.yenigun
  * 
@@ -30,6 +31,8 @@ public class Device {
 	private String batteryLevel;
 	
 	private String runningApplicationNumber;
+	
+	private String lastDataDate;
 
 	public String getName() {
 		return name;
@@ -53,6 +56,14 @@ public class Device {
 
 	public void setRunningApplicationNumber(String runningApplicationNumber) {
 		this.runningApplicationNumber = runningApplicationNumber;
+	}
+
+	public String getLastDataDate() {
+		return lastDataDate;
+	}
+
+	public void setLastDataDate(String lastDataDate) {
+		this.lastDataDate = lastDataDate;
 	}
 	
 	

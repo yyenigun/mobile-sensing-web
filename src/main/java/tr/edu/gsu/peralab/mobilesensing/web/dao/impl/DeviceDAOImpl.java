@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import tr.edu.gsu.peralab.mobilesensing.web.constant.SQLQuery;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.DeviceDAO;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.JDBCBaseDAO;
+import tr.edu.gsu.peralab.mobilesensing.web.dao.rowmapper.DeviceRowMapper;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.rowmapper.LocationRowMapper;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.rowmapper.UserRowMapper;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Activity;
@@ -29,25 +30,29 @@ public class DeviceDAOImpl extends JDBCBaseDAO implements DeviceDAO {
 
 		String phoneActQuery = "SELECT extra FROM mobilesensing.phoneactdata"
 				+ "_" + userName + "_" + user.getUserId();
-
+		
+		String phoneActQueryWithTime = "SELECT extra, time FROM mobilesensing.phoneactdata"
+				+ "_" + userName + "_" + user.getUserId();
+		
 		String batteryLevel = null;
 		String runningApplications = null;
 		Device device = new Device();
 		try {
-			batteryLevel = getJdbcTemplate()
+			Device deviceWithBatteryLevel = getJdbcTemplate()
 					.queryForObject(
-							phoneActQuery
+							phoneActQueryWithTime
 									+ " WHERE Feature = 'Battery' AND Field = 'Battery Level' ORDER BY time DESC LIMIT 1",
-							String.class);
+							new DeviceRowMapper());
 			runningApplications = getJdbcTemplate()
 					.queryForObject(
 							phoneActQuery
 									+ " WHERE Feature = 'Application' AND Field = 'Running Applications' ORDER BY time DESC LIMIT 1",
 							String.class);
-			batteryLevel = batteryLevel.substring(0, batteryLevel.length() - 1);
+			batteryLevel = deviceWithBatteryLevel.getBatteryLevel().substring(0, deviceWithBatteryLevel.getBatteryLevel().length() - 1);
 			device.setBatteryLevel(batteryLevel);
 			device.setRunningApplicationNumber(runningApplications);
 			device.setName(userName);
+			device.setLastDataDate(deviceWithBatteryLevel.getLastDataDate());
 		} catch (EmptyResultDataAccessException e) {
 			logger.warn(e);
 		}

@@ -137,7 +137,7 @@ public class UserService {
 	public Map<Date, Map<String, Double>> retrieveMonthlyActivityPercentage(
 			String userName) {
 		Map<Date, Map<String, Double>> monthlyActivityMap = new TreeMap<Date, Map<String, Double>>();
-		for (int i = 0; i < 6; i++) {
+		for (int i = 1; i < 7; i++) {
 			Calendar startTime = Calendar.getInstance();
 			startTime.add(Calendar.MONTH, -i);
 			Calendar endTime = Calendar.getInstance();
@@ -196,7 +196,8 @@ public class UserService {
 					activityNumber++;
 				}
 			}
-			UserActivity userActivity = new UserActivity(user.getUserName(), activityNumber);
+			UserActivity userActivity = new UserActivity(user.getUserName(),
+					activityNumber);
 			userActivityList.add(userActivity);
 		}
 		Collections.sort(userActivityList);
@@ -234,8 +235,8 @@ public class UserService {
 			response.setPeriod(dateFormat.format(startTime.getTime()) + " - "
 					+ dateFormat.format(endTime.getTime()));
 		} else {
-			startTime.add(Calendar.MONTH, -index);
-			endTime.add(Calendar.MONTH, 1 - index);
+			startTime.add(Calendar.MONTH, -(index + 1));
+			endTime.add(Calendar.MONTH, -index);
 			response.setPeriod(new SimpleDateFormat("MMM", Locale
 					.forLanguageTag("TR")).format(startTime.getTime()));
 		}

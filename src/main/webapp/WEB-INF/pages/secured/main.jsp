@@ -132,8 +132,8 @@
                             'Bu Ay': [moment().startOf('month'), moment().endOf('month')],
                             'Son 6 Ay': [moment().subtract('months', 6).startOf('month'), moment().endOf('month')]
                         },
-                        startDate: moment().subtract('month', 6),
-                        endDate: moment()
+                        startDate: moment().subtract('month', 7),
+                        endDate: moment().subtract('month', 1)
                     },
             		function(start, end) {
         				var json = { "startTime" : start.format('YYYY-MM-DD H:mm:ss'), "endTime": end.format('YYYY-MM-DD H:mm:ss')};

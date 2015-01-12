@@ -44,7 +44,7 @@ public class MainController {
 				userService.retrieveOnlineUserCount());
 		model.addAttribute("users", userService.retrieveAllUsers());
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.MONTH, -6);
+		cal.add(Calendar.MONTH, -7);
 		Map<String, Double> activityMap = userService.retrieveActivityNumbers(
 				userName, cal.getTimeInMillis(), new Date().getTime());
 		Map<Date, Map<String, Double>> monthlyActivityMap = userService
@@ -63,6 +63,8 @@ public class MainController {
 	public Map<String, Double> retrieveActivityPercentages(Model model,
 			@RequestBody ActivityFilter activityFilter, Principal principal) {
 		Map<String, Double> activities = null;
+		String userName = principal.getName();
+		model.addAttribute("username", userName);
 		try {
 			activities = userService.retrieveActivityNumbers(principal
 					.getName(), DateUtil.retriveJsonTimeValue(activityFilter
@@ -81,6 +83,8 @@ public class MainController {
 	public ActivityMapResponseList retrieveActivityPercentage(
 			@RequestBody ActivityFilter activityFilter, Model model,
 			Principal principal) {
+		String userName = principal.getName();
+		model.addAttribute("username", userName);
 		ActivityMapResponseList activityMapResponseList = null;
 		try {
 			activityMapResponseList = userService
@@ -97,6 +101,8 @@ public class MainController {
 
 	@RequestMapping(value = "/secured/activityrankings")
 	public String retrieveUserActivityRankings(Model model, Principal principal) {
+		String userName = principal.getName();
+		model.addAttribute("username", userName);
 		UserActivityList userActivityList = null;
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.MONTH, -12);
@@ -114,6 +120,8 @@ public class MainController {
 	public UserActivityList retrieveUserActivityRankingsJSON(
 			@RequestBody ActivityFilter activityFilter, Model model,
 			Principal principal) {
+		String userName = principal.getName();
+		model.addAttribute("username", userName);
 		UserActivityList userActivityList = null;
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.MONTH, -12);

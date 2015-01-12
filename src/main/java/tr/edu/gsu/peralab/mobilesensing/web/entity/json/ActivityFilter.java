@@ -13,6 +13,16 @@ public class ActivityFilter implements Serializable {
 	private String startTime;
 
 	private String endTime;
+	
+	private String activity;
+
+	public String getActivity() {
+		return activity;
+	}
+
+	public void setActivity(String activity) {
+		this.activity = activity;
+	}
 
 	public String getStartTime() {
 		return startTime;

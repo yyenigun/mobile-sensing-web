@@ -13,14 +13,20 @@
 					<i class="fa fa-dashboard"></i> <span>Ana Sayfa</span>
 			</a></li>
 			<sec:authorize access="isAuthenticated()">
-				<li class="treeview"><a href="${pageContext.request.contextPath}/secured/main"> <i class="fa fa-edit"></i>
-						<span>Kontrol Paneli</span> <i class="fa fa-angle-left pull-right"></i>
+				<li class="treeview"><a
+					href="${pageContext.request.contextPath}/secured/main"> <i
+						class="fa fa-edit"></i> <span>Kontrol Paneli</span> <i
+						class="fa fa-angle-left pull-right"></i>
 				</a>
 					<ul class="treeview-menu">
 						<li><a href="${pageContext.request.contextPath}/secured/main"><i
-								class="fa fa-angle-double-right"></i> Hareket Bilgileri </a></li>
-						<li><a href="${pageContext.request.contextPath}/secured/device/${username}"><i
+								class="fa fa-angle-double-right"></i> Aktivite Bilgileri </a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/secured/device/${username}"><i
 								class="fa fa-angle-double-right"></i> Cihaz Bilgileri </a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/secured/activityrankings"><i
+								class="fa fa-angle-double-right"></i> Aktivite Sıralamaları </a></li>
 					</ul></li>
 			</sec:authorize>
 			<li><a

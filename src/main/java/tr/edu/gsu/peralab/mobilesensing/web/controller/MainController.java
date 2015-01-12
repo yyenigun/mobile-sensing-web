@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import tr.edu.gsu.peralab.mobilesensing.web.entity.Activity;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Location;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.json.ActivityFilter;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.json.ActivityMapResponseList;
+import tr.edu.gsu.peralab.mobilesensing.web.entity.json.UserActivityList;
 import tr.edu.gsu.peralab.mobilesensing.web.service.UserService;
 import tr.edu.gsu.peralab.mobilesensing.web.util.DateUtil;
 
@@ -30,9 +32,8 @@ public class MainController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	private static final Logger LOGGER = Logger.getLogger(MainController.class);
-	
 
 	@RequestMapping("/secured/main")
 	public String main(Model model, Principal principal) {
@@ -82,14 +83,46 @@ public class MainController {
 			Principal principal) {
 		ActivityMapResponseList activityMapResponseList = null;
 		try {
-			activityMapResponseList = userService.retrieveActivityPercentage(principal
-					.getName(), DateUtil.retriveJsonTimeValue(activityFilter
-					.getStartTime()), DateUtil
-					.retriveJsonTimeValue(activityFilter.getEndTime()));
+			activityMapResponseList = userService
+					.retrieveActivityPercentage(principal.getName(),
+							DateUtil.retriveJsonTimeValue(activityFilter
+									.getStartTime()), DateUtil
+									.retriveJsonTimeValue(activityFilter
+											.getEndTime()));
 		} catch (ParseException e) {
 			LOGGER.error(e);
 		}
 		return activityMapResponseList;
+	}
+
+	@RequestMapping(value = "/secured/activityrankings")
+	public String retrieveUserActivityRankings(Model model, Principal principal) {
+		UserActivityList userActivityList = null;
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.MONTH, -12);
+		userActivityList = userService.retrieveActivityRankings(
+				cal.getTimeInMillis(), new Date().getTime(),
+				Activity.STATIONARY);
+		model.addAttribute("userrankings", userActivityList);
+		model.addAttribute("currentActivity", Activity.STATIONARY.getLabel());
+		model.addAttribute("allactivities", Activity.values());
+		return "/secured/activityrankings";
+	}
+
+	@RequestMapping(value = "/secured/renderactivityrankings", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public UserActivityList retrieveUserActivityRankingsJSON(
+			@RequestBody ActivityFilter activityFilter, Model model,
+			Principal principal) {
+		UserActivityList userActivityList = null;
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.MONTH, -12);
+		userActivityList = userService.retrieveActivityRankings(
+				cal.getTimeInMillis(), new Date().getTime(),
+				Activity.toActivity(activityFilter.getActivity()));
+		model.addAttribute("currentActivity",activityFilter.getActivity());
+		model.addAttribute("userrankings", userActivityList);
+		return userActivityList;
 	}
 
 	@RequestMapping("/secured/device/{username}")

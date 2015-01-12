@@ -37,8 +37,10 @@ import tr.edu.gsu.peralab.mobilesensing.web.entity.Activity;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Location;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.User;
+import tr.edu.gsu.peralab.mobilesensing.web.entity.UserActivity;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.json.ActivityMapResponse;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.json.ActivityMapResponseList;
+import tr.edu.gsu.peralab.mobilesensing.web.entity.json.UserActivityList;
 
 /**
  * @author yalcin.yenigun
@@ -173,6 +175,33 @@ public class UserService {
 		Collections.sort(responses);
 		activityMapResponseList.setActivityMaps(responses);
 		return activityMapResponseList;
+	}
+
+	/**
+	 * @param startTimeMillis
+	 * @param endTimeMillis
+	 * @param activity
+	 * @return User activity rankings
+	 */
+	public UserActivityList retrieveActivityRankings(Long startTimeMillis,
+			Long endTimeMillis, Activity activity) {
+		List<UserActivity> userActivityList = new ArrayList<UserActivity>();
+		UserActivityList userActivityListJson = new UserActivityList();
+		for (User user : userDAO.retrieveAllUsers()) {
+			int activityNumber = 0;
+			List<Activity> userActivities = deviceDAO.retrieveUserActivity(
+					user.getUserName(), startTimeMillis, endTimeMillis);
+			for (Activity ac : userActivities) {
+				if (activity.equals(ac)) {
+					activityNumber++;
+				}
+			}
+			UserActivity userActivity = new UserActivity(user.getUserName(), activityNumber);
+			userActivityList.add(userActivity);
+		}
+		Collections.sort(userActivityList);
+		userActivityListJson.setUserActivities(userActivityList);
+		return userActivityListJson;
 	}
 
 	private void calculatePeriod(long hours, int index, Calendar startTime,

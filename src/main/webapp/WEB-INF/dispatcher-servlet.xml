@@ -21,8 +21,8 @@
 	<mvc:annotation-driven />
 
 	<context:annotation-config />
-	
-	
+
+
 
 	<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
 
@@ -30,6 +30,9 @@
 
 	<mvc:view-controller path="/secured/device"
 		view-name="/secured/device" />
+
+	<mvc:view-controller path="/secured/activityrankings"
+		view-name="/secured/activityrankings" />
 
 	<bean id="webexpressionHandler"
 		class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />

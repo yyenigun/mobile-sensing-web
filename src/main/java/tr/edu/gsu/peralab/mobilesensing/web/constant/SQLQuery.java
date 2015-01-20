@@ -26,14 +26,14 @@ public enum SQLQuery {
 
 	GET_USER_BY_USERNAME(
 			"SELECT t.useruuid, t.username, t.userlastname, t.password, t.age, t.weight, t.height, t.sex, t.rights, t.coninterval,"
-					+ "t.popupinterval, t.isonline, t.isforcestart FROM user t WHERE t.username=?"),
+					+ "t.popupinterval, t.isonline, t.isforcestart FROM User t WHERE t.username=?"),
 
-	GET_USER_COUNT("SELECT COUNT(*) FROM user"),
+	GET_USER_COUNT("SELECT COUNT(*) FROM User"),
 
 	GET_ONLINE_USER_COUNT(
-			"SELECT COUNT(*) FROM user WHERE isOnline=1"),
+			"SELECT COUNT(*) FROM User WHERE isOnline=1"),
 
-	GET_ALL_USERS("SELECT * FROM user");
+	GET_ALL_USERS("SELECT * FROM User");
 
 	private String value;
 

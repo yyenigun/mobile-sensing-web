@@ -28,10 +28,10 @@ public class DeviceDAOImpl extends JDBCBaseDAO implements DeviceDAO {
 				SQLQuery.GET_USER_BY_USERNAME.getValue(),
 				new Object[] { userName }, new UserRowMapper());
 
-		String phoneActQuery = "SELECT extra FROM mobilesensing.phoneactdata"
+		String phoneActQuery = "SELECT extra FROM PhoneActData"
 				+ "_" + userName + "_" + user.getUserId();
 		
-		String phoneActQueryWithTime = "SELECT extra, time FROM mobilesensing.phoneactdata"
+		String phoneActQueryWithTime = "SELECT extra, time FROM PhoneActData"
 				+ "_" + userName + "_" + user.getUserId();
 		
 		String batteryLevel = null;
@@ -66,7 +66,7 @@ public class DeviceDAOImpl extends JDBCBaseDAO implements DeviceDAO {
 				new Object[] { userName }, new UserRowMapper());
 		Location location = null;
 		try {
-			String locationQuery = "SELECT provider,latitude, longitude FROM mobilesensing.locationinfodata"
+			String locationQuery = "SELECT provider,latitude, longitude FROM LocationInfoData"
 					+ "_" + userName + "_" + user.getUserId();
 			location = (Location) getJdbcTemplate().queryForObject(
 					locationQuery + " ORDER BY time DESC LIMIT 1",
@@ -88,7 +88,7 @@ public class DeviceDAOImpl extends JDBCBaseDAO implements DeviceDAO {
 		String startTimeStr = DateUtil.convertTimestampToDbDate(startTime);
 		String endTimeStr = DateUtil.convertTimestampToDbDate(endTime);
 
-		String activityQuery = "SELECT actfeatures.act FROM mobilesensing.actfeaturesdata"
+		String activityQuery = "SELECT actfeatures.act FROM ActFeaturesData"
 				+ "_"
 				+ userName
 				+ "_"

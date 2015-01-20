@@ -33,8 +33,6 @@ public class MainController {
 	@Autowired
 	private UserService userService;
 
-	private static final Logger LOGGER = Logger.getLogger(MainController.class);
-
 	@RequestMapping("/secured/main")
 	public String main(Model model, Principal principal) {
 		String userName = principal.getName();
@@ -61,20 +59,14 @@ public class MainController {
 	@RequestMapping(value = "/secured/main/activities", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public Map<String, Double> retrieveActivityPercentages(Model model,
-			@RequestBody ActivityFilter activityFilter, Principal principal) {
+			@RequestBody ActivityFilter activityFilter, Principal principal)
+			throws ParseException {
 		Map<String, Double> activities = null;
 		String userName = principal.getName();
 		model.addAttribute("username", userName);
-		try {
-			activities = userService.retrieveActivityNumbers(principal
-					.getName(), DateUtil.retriveJsonTimeValue(activityFilter
-					.getStartTime()), DateUtil
-					.retriveJsonTimeValue(activityFilter.getEndTime()));
-		} catch (NumberFormatException e) {
-			LOGGER.error(e);
-		} catch (ParseException e) {
-			LOGGER.error(e);
-		}
+		activities = userService.retrieveActivityNumbers(principal.getName(),
+				DateUtil.retriveJsonTimeValue(activityFilter.getStartTime()),
+				DateUtil.retriveJsonTimeValue(activityFilter.getEndTime()));
 		return activities;
 	}
 
@@ -82,20 +74,14 @@ public class MainController {
 	@ResponseBody
 	public ActivityMapResponseList retrieveActivityPercentage(
 			@RequestBody ActivityFilter activityFilter, Model model,
-			Principal principal) {
+			Principal principal) throws ParseException {
 		String userName = principal.getName();
 		model.addAttribute("username", userName);
 		ActivityMapResponseList activityMapResponseList = null;
-		try {
-			activityMapResponseList = userService
-					.retrieveActivityPercentage(principal.getName(),
-							DateUtil.retriveJsonTimeValue(activityFilter
-									.getStartTime()), DateUtil
-									.retriveJsonTimeValue(activityFilter
-											.getEndTime()));
-		} catch (ParseException e) {
-			LOGGER.error(e);
-		}
+		activityMapResponseList = userService.retrieveActivityPercentage(
+				principal.getName(),
+				DateUtil.retriveJsonTimeValue(activityFilter.getStartTime()),
+				DateUtil.retriveJsonTimeValue(activityFilter.getEndTime()));
 		return activityMapResponseList;
 	}
 
@@ -128,7 +114,7 @@ public class MainController {
 		userActivityList = userService.retrieveActivityRankings(
 				cal.getTimeInMillis(), new Date().getTime(),
 				Activity.toActivity(activityFilter.getActivity()));
-		model.addAttribute("currentActivity",activityFilter.getActivity());
+		model.addAttribute("currentActivity", activityFilter.getActivity());
 		model.addAttribute("userrankings", userActivityList);
 		return userActivityList;
 	}

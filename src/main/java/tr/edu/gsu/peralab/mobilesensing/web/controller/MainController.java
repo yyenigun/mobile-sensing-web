@@ -131,4 +131,23 @@ public class MainController {
 		return "secured/device";
 	}
 
+	@RequestMapping("/secured/activity/{username}")
+	public String user(@PathVariable String username, Model model,
+			Principal principal) {
+		model.addAttribute("username", username);
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.MONTH, -7);
+		Map<String, Double> activityMap = userService.retrieveActivityNumbers(
+				username, cal.getTimeInMillis(), new Date().getTime());
+		Map<Date, Map<String, Double>> monthlyActivityMap = userService
+				.retrieveMonthlyActivityPercentage(username);
+		model.addAttribute("activityMap", activityMap);
+		model.addAttribute("defaultStartTime", new SimpleDateFormat(
+				"MM/dd/YYYY h:mm a").format(cal.getTime()));
+		model.addAttribute("defaultEndTime", new SimpleDateFormat(
+				"MM/dd/YYYY h:mm a").format(new Date()));
+		model.addAttribute("monthlyActivityMap", monthlyActivityMap);
+		return "secured/activity";
+	}
+
 }

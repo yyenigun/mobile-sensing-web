@@ -19,11 +19,21 @@
 						class="fa fa-angle-left pull-right"></i>
 				</a>
 					<ul class="treeview-menu" style="display: block;">
-						<li><a href="${pageContext.request.contextPath}/secured/main"><i
-								class="fa fa-angle-double-right"></i> Aktivite Bilgileri </a></li>
-						<li><a
-							href="${pageContext.request.contextPath}/secured/device/${username}"><i
-								class="fa fa-angle-double-right"></i> Cihaz Bilgileri </a></li>
+						<sec:authorize
+							access="hasRole('ROLE_USER')  and !hasRole('ROLE_ADMIN')">
+							<li><a
+								href="${pageContext.request.contextPath}/secured/main"><i
+									class="fa fa-angle-double-right"></i> Aktivite Bilgileri </a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/secured/device/${username}"><i
+									class="fa fa-angle-double-right"></i> Cihaz Bilgileri </a></li>
+						</sec:authorize>
+						<sec:authorize
+							access="hasRole('ROLE_ADMIN')">
+							<li><a
+								href="${pageContext.request.contextPath}/secured/main"><i
+									class="fa fa-angle-double-right"></i> Kullanıcı Listesi </a></li>
+						</sec:authorize>
 						<li><a
 							href="${pageContext.request.contextPath}/secured/activityrankings"><i
 								class="fa fa-angle-double-right"></i> Aktivite Sıralamaları </a></li>

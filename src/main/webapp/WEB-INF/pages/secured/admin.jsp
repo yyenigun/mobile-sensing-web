@@ -54,7 +54,8 @@
 							<th>Soyisim</th>
 							<th>Çevrimiçi</th>
 							<th>Yaş</th>
-							<th>Cihaz detayı</th>
+							<th>Cihaz Bilgileri</th>
+							<th>Aktivite Bilgileri</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -64,7 +65,8 @@
 								<td>${user.lastName}</td>
 								<td>${user.isOnline}</td>
 								<td>${user.age}</td>
-								<td><a href="device/${user.userName}">Detay</a></td>
+								<td><a href="device/${user.userName}">Cihaz</a></td>
+								<td><a href="activity/${user.userName}">Aktivite</a></td>
 							</tr>
 						</c:forEach>
 				</table>

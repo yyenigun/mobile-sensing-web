@@ -31,6 +31,9 @@
 	<mvc:view-controller path="/secured/device"
 		view-name="/secured/device" />
 
+	<mvc:view-controller path="/secured/activity"
+		view-name="/secured/activity" />
+
 	<mvc:view-controller path="/secured/activityrankings"
 		view-name="/secured/activityrankings" />
 

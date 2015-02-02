@@ -36,7 +36,7 @@
 				<div class="box box-solid">
 					<div class="box-header">
 						<i class="fa fa-bar-chart-o"></i>
-						<h3 class="box-title">${device.name} (${device.lastDataDate})</h3>
+						<h3 class="box-title">${device.name}(${device.lastDataDate})</h3>
 						<div class="box-tools pull-right">
 							<button class="btn btn-default btn-sm" data-widget="collapse">
 								<i class="fa fa-minus"></i>
@@ -69,7 +69,7 @@
 				<div class="box box-solid">
 					<div class="box-header">
 						<i class="fa fa-map-marker"></i>
-						<h3 class="box-title">Cihaz Konumu</h3>
+						<h3 class="box-title">Son Cihaz Konumu</h3>
 						<div class="box-tools pull-right">
 							<button class="btn btn-default btn-sm" data-widget="collapse">
 								<i class="fa fa-minus"></i>
@@ -90,6 +90,7 @@
 					</div>
 					<!-- /.box -->
 					<!-- /.row -->
+				</div>
 			</section>
 
 			<!-- /.content -->

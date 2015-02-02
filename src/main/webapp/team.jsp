@@ -46,6 +46,7 @@
 								<li><a href="http://yalcinyenigun.com/">Yüksek Lisans
 										Öğrencisi Yalçın Yenigün</a></li>
 								<li>Yüksek Lisans Öğrencisi Mehmet Aktaş</li>
+								<li>Faruk Açan (Boğaziçi Üniversitesi)</li>
 
 							</ul>
 						</div>

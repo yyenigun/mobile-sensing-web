@@ -18,7 +18,7 @@
 						class="fa fa-edit"></i> <span>Kontrol Paneli</span> <i
 						class="fa fa-angle-left pull-right"></i>
 				</a>
-					<ul class="treeview-menu">
+					<ul class="treeview-menu" style="display: block;">
 						<li><a href="${pageContext.request.contextPath}/secured/main"><i
 								class="fa fa-angle-double-right"></i> Aktivite Bilgileri </a></li>
 						<li><a

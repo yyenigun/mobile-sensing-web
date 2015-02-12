@@ -50,7 +50,7 @@
 								<input type="text" class="knob" value="${device.batteryLevel}"
 									data-width="120" data-height="120" data-fgColor="#3c8dbc"
 									data-readonly="true" />
-								<div class="knob-label">Pil Durumu</div>
+								<div class="knob-label">Son Pil Durumu</div>
 							</div>
 							<!-- ./col -->
 							<div class="col-md-6 col-sm-6 col-xs-6 text-center">

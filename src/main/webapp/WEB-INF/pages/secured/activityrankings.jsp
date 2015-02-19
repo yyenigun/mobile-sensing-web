@@ -44,14 +44,14 @@
 							<div class="box-body table-responsive">
 								<select id="activitySelect" class="form-control">
 									<c:forEach items="${allactivities}" var="activity">
-										<option>${activity.label}</option>
+										<option>${activity}</option>
 									</c:forEach>
 								</select>
 							</div>
 						</div>
 						<div class="box-header">
-							<h3 id="currentActivity" class="box-title">Aktivite Sıralamaları :
-								${currentActivity}</h3>
+							<h3 id="currentActivity" class="box-title">Aktivite
+								Sıralamaları : ${currentActivity}</h3>
 						</div>
 
 
@@ -69,8 +69,9 @@
 									<c:forEach items="${userrankings.userActivities}"
 										var="userRanking">
 										<tr>
-											<td id = "${userRanking.userName}"> ${userRanking.userName} </td>
-											<td id = "${userRanking.userName}activity">${userRanking.activityNumber}</td>
+											<td id="${userRanking.userName}">
+												${userRanking.userName}</td>
+											<td id="${userRanking.userName}activity">${userRanking.activityNumber}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -91,35 +92,71 @@
 	<script src="<c:url value="/resources/js/AdminLTE/dashboard.js" />"
 		type="text/javascript"></script>
 	<script type="text/javascript">
+		var myApp;
+		myApp = myApp
+				|| (function() {
+					var pleaseWaitDiv = $('<div class="modal hide" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false"><div class="modal-header"><h1>Processing...</h1></div><div class="modal-body"><div class="progress progress-striped active"><div class="bar" style="width: 100%;"></div></div></div></div>');
+					return {
+						showPleaseWait : function() {
+							pleaseWaitDiv.modal();
+						},
+						hidePleaseWait : function() {
+							pleaseWaitDiv.modal('hide');
+						},
+
+					};
+				})();
+
 		$(function() {
 			var datatable = $('#activityTable').dataTable();
 		});
-		$('#activitySelect').on('change', function() {
-			var json = { "activity" : this.value};
-	        $.ajax({
-	            url : '${pageContext.request.contextPath}/secured/renderactivityrankings',
-	            type: 'POST',
-	            beforeSend: function(xhr) {
-	                xhr.setRequestHeader("Accept", "application/json");
-	                xhr.setRequestHeader("Content-Type", "application/json");
-	            },
-	            data: JSON.stringify(json),
-	            success : function(data) {
-	    			$("#currentActivity").text("Aktivite Sıralamaları : " + $('#activitySelect option:selected').text());
-	            	for (var i = 0; i < data.userActivities.length; i++) {
-	            		var userId = "#" + data.userActivities[i].userName;
-	            		var activityId = "#" + data.userActivities[i].userName + "activity";
-	            		$(userId).text(data.userActivities[i].userName);
-	            		$(activityId).text(data.userActivities[i].activityNumber);
-		            	console.log(userId);
-		            	console.log(activityId);
-	            	}
-	            },
-	            error: function(result) {
-	            	console.log(result);
-	            }
-	        });
-		});
+		$('#activitySelect')
+				.on(
+						'change',
+						function() {
+							myApp.showPleaseWait();
+							var json = {
+								"activity" : this.value
+							};
+							$
+									.ajax({
+										url : '${pageContext.request.contextPath}/secured/renderactivityrankings',
+										type : 'POST',
+										beforeSend : function(xhr) {
+											xhr.setRequestHeader("Accept",
+													"application/json");
+											xhr.setRequestHeader(
+													"Content-Type",
+													"application/json");
+										},
+										data : JSON.stringify(json),
+										success : function(data) {
+											$("#currentActivity")
+													.text(
+															"Aktivite Sıralamaları : "
+																	+ $(
+																			'#activitySelect option:selected')
+																			.text());
+											for (var i = 0; i < data.userActivities.length; i++) {
+												var userId = "#"
+														+ data.userActivities[i].userName;
+												var activityId = "#"
+														+ data.userActivities[i].userName
+														+ "activity";
+												$(userId)
+														.text(
+																data.userActivities[i].userName);
+												$(activityId)
+														.text(
+																data.userActivities[i].activityNumber);
+											}
+											myApp.hidePleaseWait();
+										},
+										error : function(result) {
+											console.log(result);
+										}
+									});
+						});
 	</script>
 </body>
 </html>

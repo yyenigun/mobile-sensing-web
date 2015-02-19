@@ -13,7 +13,6 @@ import tr.edu.gsu.peralab.mobilesensing.web.dao.JDBCBaseDAO;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.rowmapper.DeviceRowMapper;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.rowmapper.LocationRowMapper;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.rowmapper.UserRowMapper;
-import tr.edu.gsu.peralab.mobilesensing.web.entity.Activity;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Location;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.User;
@@ -79,31 +78,32 @@ public class DeviceDAOImpl extends JDBCBaseDAO implements DeviceDAO {
 	}
 
 	@Override
-	public List<Activity> retrieveUserActivity(String userName, long startTime,
+	public List<String> retrieveUserActivity(String userName, long startTime,
 			long endTime) {
-		List<Activity> activities = new ArrayList<Activity>();
+		List<String> activities = new ArrayList<String>();
 		User user = (User) getJdbcTemplate().queryForObject(
 				SQLQuery.GET_USER_BY_USERNAME.getValue(),
 				new Object[] { userName }, new UserRowMapper());
 
 		String startTimeStr = DateUtil.convertTimestampToDbDate(startTime);
 		String endTimeStr = DateUtil.convertTimestampToDbDate(endTime);
+		
 
 		String activityQuery = "SELECT actfeatures.act FROM ActFeaturesData"
 				+ "_"
 				+ userName
 				+ "_"
 				+ user.getUserId()
-				+ " actfeatures  WHERE  STR_TO_DATE(actfeatures.time, '%d.%m.%Y_%H:%i:%s') >= '"
+				+ " actfeatures  WHERE  STR_TO_DATE(actfeatures.time, '%d.%m.%Y %H:%i:%s') >= '"
 				+ startTimeStr
-				+ "' AND STR_TO_DATE(actfeatures.time, '%d.%m.%Y_%H:%i:%s') <= '"
+				+ "' AND STR_TO_DATE(actfeatures.time, '%d.%m.%Y %H:%i:%s') <= '"
 				+ endTimeStr + "'";
 
 		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(
 				activityQuery);
 		for (Map<String, Object> row : rows) {
-			activities.add(Activity.valueOf(((String) row.get("act"))
-					.toUpperCase()));
+			activities.add(((String) row.get("act"))
+					.toUpperCase());
 		}
 		return activities;
 	}

@@ -5,9 +5,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -42,11 +43,16 @@ public class MainController {
 				userService.retrieveOnlineUserCount());
 		model.addAttribute("users", userService.retrieveAllUsers());
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.MONTH, -7);
+		cal.add(Calendar.MONTH, -6);
 		Map<String, Double> activityMap = userService.retrieveActivityNumbers(
 				userName, cal.getTimeInMillis(), new Date().getTime());
 		Map<Date, Map<String, Double>> monthlyActivityMap = userService
 				.retrieveMonthlyActivityPercentage(userName);
+		Set<String> yKeys = new HashSet<String>();
+		for(Map<String, Double> map: monthlyActivityMap.values()){
+			yKeys.addAll(map.keySet());
+		}
+		model.addAttribute("yKeys", yKeys);
 		model.addAttribute("activityMap", activityMap);
 		model.addAttribute("defaultStartTime", new SimpleDateFormat(
 				"MM/dd/YYYY h:mm a").format(cal.getTime()));
@@ -91,13 +97,13 @@ public class MainController {
 		model.addAttribute("username", userName);
 		UserActivityList userActivityList = null;
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.MONTH, -12);
+		cal.add(Calendar.MONTH, -6);
 		userActivityList = userService.retrieveActivityRankings(
 				cal.getTimeInMillis(), new Date().getTime(),
-				Activity.STATIONARY);
+				"STATIONARY");
 		model.addAttribute("userrankings", userActivityList);
-		model.addAttribute("currentActivity", Activity.STATIONARY.getLabel());
-		model.addAttribute("allactivities", Activity.values());
+		model.addAttribute("currentActivity", "STATIONARY");
+		model.addAttribute("allactivities", Activity.allActivities);
 		return "/secured/activityrankings";
 	}
 
@@ -113,7 +119,7 @@ public class MainController {
 		cal.add(Calendar.MONTH, -12);
 		userActivityList = userService.retrieveActivityRankings(
 				cal.getTimeInMillis(), new Date().getTime(),
-				Activity.toActivity(activityFilter.getActivity()));
+				activityFilter.getActivity());
 		model.addAttribute("currentActivity", activityFilter.getActivity());
 		model.addAttribute("userrankings", userActivityList);
 		return userActivityList;
@@ -136,7 +142,7 @@ public class MainController {
 			Principal principal) {
 		model.addAttribute("username", username);
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.MONTH, -7);
+		cal.add(Calendar.MONTH, -6);
 		Map<String, Double> activityMap = userService.retrieveActivityNumbers(
 				username, cal.getTimeInMillis(), new Date().getTime());
 		Map<Date, Map<String, Double>> monthlyActivityMap = userService
@@ -147,6 +153,11 @@ public class MainController {
 		model.addAttribute("defaultEndTime", new SimpleDateFormat(
 				"MM/dd/YYYY h:mm a").format(new Date()));
 		model.addAttribute("monthlyActivityMap", monthlyActivityMap);
+		Set<String> yKeys = new HashSet<String>();
+		for(Map<String, Double> map: monthlyActivityMap.values()){
+			yKeys.addAll(map.keySet());
+		}
+		model.addAttribute("yKeys", yKeys);
 		return "secured/activity";
 	}
 

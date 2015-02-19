@@ -19,7 +19,6 @@ package tr.edu.gsu.peralab.mobilesensing.web.dao;
 import java.sql.Timestamp;
 import java.util.List;
 
-import tr.edu.gsu.peralab.mobilesensing.web.entity.Activity;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Location;
 
@@ -50,7 +49,7 @@ public interface DeviceDAO {
 	 * @param endTime
 	 * @return User's activity list (Bicycle, Stationary, Walking..etc.) between start time and end time
 	 */
-	List<Activity> retrieveUserActivity(String userName, long startTime, long endTime);
+	List<String> retrieveUserActivity(String userName, long startTime, long endTime);
 	
 
 	/**

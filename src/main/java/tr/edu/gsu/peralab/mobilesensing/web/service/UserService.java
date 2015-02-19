@@ -33,7 +33,6 @@ import org.springframework.stereotype.Service;
 
 import tr.edu.gsu.peralab.mobilesensing.web.dao.DeviceDAO;
 import tr.edu.gsu.peralab.mobilesensing.web.dao.UserDAO;
-import tr.edu.gsu.peralab.mobilesensing.web.entity.Activity;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Location;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.User;
@@ -112,15 +111,15 @@ public class UserService {
 	 */
 	public Map<String, Double> retrieveActivityNumbers(String userName,
 			long startTime, long endTime) {
-		List<Activity> userActivities = deviceDAO.retrieveUserActivity(
+		List<String> userActivities = deviceDAO.retrieveUserActivity(
 				userName, startTime, endTime);
 		Map<String, Double> activityNumbers = new HashMap<String, Double>();
-		for (Activity activity : userActivities) {
-			if (activityNumbers.get(activity.getLabel()) == null) {
-				activityNumbers.put(activity.getLabel(), 1.0);
+		for (String activity : userActivities) {
+			if (activityNumbers.get(activity) == null) {
+				activityNumbers.put(activity, 1.0);
 			} else {
-				activityNumbers.put(activity.getLabel(),
-						activityNumbers.get(activity.getLabel()) + 1);
+				activityNumbers.put(activity,
+						activityNumbers.get(activity) + 1);
 			}
 		}
 		for (Map.Entry<String, Double> entry : activityNumbers.entrySet()) {
@@ -137,7 +136,7 @@ public class UserService {
 	public Map<Date, Map<String, Double>> retrieveMonthlyActivityPercentage(
 			String userName) {
 		Map<Date, Map<String, Double>> monthlyActivityMap = new TreeMap<Date, Map<String, Double>>();
-		for (int i = 1; i < 7; i++) {
+		for (int i = 0; i < 6; i++) {
 			Calendar startTime = Calendar.getInstance();
 			startTime.add(Calendar.MONTH, -i);
 			Calendar endTime = Calendar.getInstance();
@@ -184,15 +183,15 @@ public class UserService {
 	 * @return User activity rankings
 	 */
 	public UserActivityList retrieveActivityRankings(Long startTimeMillis,
-			Long endTimeMillis, Activity activity) {
+			Long endTimeMillis, String activity) {
 		List<UserActivity> userActivityList = new ArrayList<UserActivity>();
 		UserActivityList userActivityListJson = new UserActivityList();
 		for (User user : userDAO.retrieveAllUsers()) {
 			int activityNumber = 0;
-			List<Activity> userActivities = deviceDAO.retrieveUserActivity(
+			List<String> userActivities = deviceDAO.retrieveUserActivity(
 					user.getUserName(), startTimeMillis, endTimeMillis);
-			for (Activity ac : userActivities) {
-				if (activity.equals(ac)) {
+			for (String ac : userActivities) {
+				if (activity.equalsIgnoreCase(ac)) {
 					activityNumber++;
 				}
 			}

@@ -27,6 +27,20 @@
 	type="text/javascript"></script>
 
 <script type="text/javascript">
+var myApp;
+myApp = myApp
+		|| (function() {
+			var pleaseWaitDiv = $('<div class="modal hide" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false"><div class="modal-header"><h1>Processing...</h1></div><div class="modal-body"><div class="progress progress-striped active"><div class="bar" style="width: 100%;"></div></div></div></div>');
+			return {
+				showPleaseWait : function() {
+					pleaseWaitDiv.modal();
+				},
+				hidePleaseWait : function() {
+					pleaseWaitDiv.modal('hide');
+				},
+
+			};
+		})();
 
 		$(function() {
 			/*
@@ -43,29 +57,21 @@
 								y : '${dateString}',
 									<c:forEach items="${monthlyActivityEntry.value}" var="monthlyEntry">
 								    	<c:if test="${not empty monthlyEntry}">
-								    		${monthlyEntry.key} : ${monthlyEntry.value},
+								    		'${monthlyEntry.key}' : ${monthlyEntry.value},
 										</c:if>
 									</c:forEach>
 							},
 						</c:forEach>
 	                 ],
 				xkey : 'y',
-				ykeys : [ <c:forEach items="${monthlyActivityMap}" var="monthlyActivityEntry">
-							<c:forEach items="${monthlyActivityEntry.value}" var="monthlyEntry">
-								<c:if test="${not empty monthlyEntry}">
-									'${monthlyEntry.key}',
-								</c:if>
+				ykeys : [ <c:forEach items="${yKeys}" var="yKey">
+									'${yKey}',
 						    </c:forEach>
-						  </c:forEach> 
 				        ],
 				labels : [ 
-						<c:forEach items="${monthlyActivityMap}" var="monthlyActivityEntry">
-							<c:forEach items="${monthlyActivityEntry.value}" var="monthlyEntry">
-								<c:if test="${not empty monthlyEntry}">
-								'${monthlyEntry.key}',
-								</c:if>
-							</c:forEach>
-						</c:forEach> 
+						<c:forEach items="${yKeys}" var="yKey">
+						  '${yKey}',
+						</c:forEach>
 				  		 ]
 			});
 			
@@ -82,6 +88,7 @@
                         endDate: moment()
                     },
             		function(start, end) {
+						myApp.showPleaseWait();
         				var json = { "startTime" : start.format('YYYY-MM-DD H:mm:ss'), "endTime": end.format('YYYY-MM-DD H:mm:ss')};
         		        $.ajax({
         		            url : '${pageContext.request.contextPath}/secured/main/activityfilter',
@@ -102,12 +109,12 @@
             		            	});
             		            	response.push(yData);
         		            	}
-        		            	console.log(data);
-        		            	console.log(response);
         		            	barchart.setData(response);
+								myApp.hidePleaseWait();
         		            },
         		            error: function(result) {
         		            	console.log(result);
+								myApp.hidePleaseWait();
         		            }
         		        });
             		}
@@ -138,6 +145,7 @@
 			 */
         	
 			function donutChartCallBack(start, end) {
+				myApp.showPleaseWait();
 				var json = { "startTime" : start.format('YYYY-MM-DD H:mm:ss'), "endTime": end.format('YYYY-MM-DD H:mm:ss')};
 		        $.ajax({
 		            url : '${pageContext.request.contextPath}/secured/main/activities',
@@ -154,9 +162,11 @@
 		            		testData.push(line);
 		            	});
 		            	donut.setData(testData);
+						myApp.hidePleaseWait();
 		            },
 		            error: function(result) {
 		            	console.log(result);
+						myApp.hidePleaseWait();
 		            }
 		        });
 			}

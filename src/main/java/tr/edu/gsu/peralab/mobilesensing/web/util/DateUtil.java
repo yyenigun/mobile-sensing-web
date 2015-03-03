@@ -18,6 +18,12 @@ public final class  DateUtil {
 		return date.getTime();
 	}
 	
+	public static long convertDeviceDateToTimestamp(String dbDate)
+			throws ParseException {
+		Date date = new SimpleDateFormat("yyyy/MM/dd H:mm.ss.SSS").parse(dbDate);
+		return date.getTime();
+	}
+		
 	public static String convertTimestampToDbDate(long timestamp){
 		return new SimpleDateFormat("yyyy-MM-dd H:mm:ss").format(timestamp);
 	}

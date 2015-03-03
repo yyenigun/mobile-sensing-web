@@ -1,5 +1,6 @@
 package tr.edu.gsu.peralab.mobilesensing.web.dao.impl;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -115,33 +116,32 @@ public class DeviceDAOImpl extends JDBCBaseDAO implements DeviceDAO {
 				SQLQuery.GET_USER_BY_USERNAME.getValue(),
 				new Object[] { userName }, new UserRowMapper());
 
-		String phoneActQuery = "SELECT extra FROM PhoneActData" + "_"
-				+ userName + "_" + user.getUserId();
-
 		String phoneActQueryWithTime = "SELECT extra, time FROM PhoneActData"
 				+ "_" + userName + "_" + user.getUserId();
 
 		String startTimeStr = DateUtil.convertTimestampToDbDate(startTime);
 		String endTimeStr = DateUtil.convertTimestampToDbDate(endTime);
-
-		String batteryLevel = null;
-		String runningApplications = null;
-		Device device = new Device();
 		try {
-			List<Device> rows = getJdbcTemplate()
+			List<Device> devices = new ArrayList<Device>();		
+			List<Map<String, Object>> rows = getJdbcTemplate()
 					.queryForList(
 							phoneActQueryWithTime
-									+ " WHERE Feature = 'Battery' AND Field = 'Battery Level' AND STR_TO_DATE(time, '%d.%m.%Y_%H:%i:%s') >= '"
+									+ " WHERE Feature = 'Battery' AND Field = 'Battery Level' AND STR_TO_DATE(time, '%Y/%m/%d %H:%i.%s.%f') >= '"
 									+ startTimeStr
-									+ "' AND STR_TO_DATE(time, '%d.%m.%Y_%H:%i:%s') <= '"
-									+ endTimeStr + "';", Device.class,
-							new DeviceRowMapper());
-			runningApplications = getJdbcTemplate()
-					.queryForObject(
-							phoneActQuery
-									+ " WHERE Feature = 'Application' AND Field = 'Running Applications' ORDER BY time DESC LIMIT 1",
-							String.class);
-			return null;
+									+ "' AND STR_TO_DATE(time, '%Y/%m/%d %H:%i.%s.%f') <= '"
+									+ endTimeStr + "';");
+			 
+			for (Map<String, Object> row : rows) {
+				Device device = new Device();
+				try {
+					device.setLastDataDate(DateUtil.convertDeviceDateToTimestamp((String)row.get("time")));
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				device.setBatteryLevel(((String)row.get("extra")).split("%")[0]);
+				devices.add(device);
+			}
+			return devices;
 		} catch (EmptyResultDataAccessException e) {
 			logger.warn(e);
 		}

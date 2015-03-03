@@ -39,6 +39,7 @@ import tr.edu.gsu.peralab.mobilesensing.web.entity.User;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.UserActivity;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.json.ActivityMapResponse;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.json.ActivityMapResponseList;
+import tr.edu.gsu.peralab.mobilesensing.web.entity.json.DeviceList;
 import tr.edu.gsu.peralab.mobilesensing.web.entity.json.UserActivityList;
 
 /**
@@ -203,6 +204,20 @@ public class UserService {
 		userActivityListJson.setUserActivities(userActivityList);
 		return userActivityListJson;
 	}
+	
+	/**
+	 * @param userName
+	 * @param startTimeMillis
+	 * @param endTimeMillis
+	 * @return Battery levels
+	 */
+	public DeviceList retrieveBatteryLevels(String userName,Long startTimeMillis,
+			Long endTimeMillis) {
+		List<Device> devices = deviceDAO.retrieveDeviceDetails(userName, startTimeMillis, endTimeMillis);
+		DeviceList deviceList = new DeviceList();
+		deviceList.setDevices(devices);
+		return deviceList;
+	}
 
 	private void calculatePeriod(long hours, int index, Calendar startTime,
 			Calendar endTime, ActivityMapResponse response) {
@@ -230,7 +245,7 @@ public class UserService {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM",
 					Locale.forLanguageTag("TR"));
 			startTime.add(Calendar.DAY_OF_MONTH, -((index + 1) * 5));
-			endTime.add(Calendar.DAY_OF_MONTH, 5 - ((-index + 1) * 5));
+			endTime.add(Calendar.DAY_OF_MONTH, 5 - ((index + 1) * 5));
 			response.setPeriod(dateFormat.format(startTime.getTime()) + " - "
 					+ dateFormat.format(endTime.getTime()));
 		} else {

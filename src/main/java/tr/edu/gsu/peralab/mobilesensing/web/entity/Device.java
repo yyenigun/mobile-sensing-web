@@ -16,6 +16,8 @@
 
 package tr.edu.gsu.peralab.mobilesensing.web.entity;
 
+import java.util.Date;
+
 
 /**
  * @author yalcin.yenigun
@@ -24,7 +26,7 @@ package tr.edu.gsu.peralab.mobilesensing.web.entity;
  * of a mobile phone.)
  * 
  */
-public class Device {
+public class Device implements Comparable<Device> {
 	
 	private String name;
 	
@@ -32,7 +34,7 @@ public class Device {
 	
 	private String runningApplicationNumber;
 	
-	private String lastDataDate;
+	private Long lastDataDate;
 
 	public String getName() {
 		return name;
@@ -58,16 +60,17 @@ public class Device {
 		this.runningApplicationNumber = runningApplicationNumber;
 	}
 
-	public String getLastDataDate() {
+	public Long getLastDataDate() {
 		return lastDataDate;
 	}
 
-	public void setLastDataDate(String lastDataDate) {
+	public void setLastDataDate(Long lastDataDate) {
 		this.lastDataDate = lastDataDate;
 	}
-	
-	
-	
-	
+
+	@Override
+	public int compareTo(Device o) {
+		return this.compareTo(o);
+	}
 
 }

@@ -214,6 +214,7 @@ public class UserService {
 	public DeviceList retrieveBatteryLevels(String userName,Long startTimeMillis,
 			Long endTimeMillis) {
 		List<Device> devices = deviceDAO.retrieveDeviceDetails(userName, startTimeMillis, endTimeMillis);
+		Collections.sort(devices);
 		DeviceList deviceList = new DeviceList();
 		deviceList.setDevices(devices);
 		return deviceList;

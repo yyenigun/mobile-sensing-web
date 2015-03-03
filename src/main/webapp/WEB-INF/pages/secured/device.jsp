@@ -146,6 +146,22 @@
 	<!-- FLOT TIME PLUGIN - also used to draw donut charts -->
     <script src="<c:url value="/resources/js/plugins/flot/jquery.flot.time.min.js" />" type="text/javascript"></script>
 	<script>
+	var myApp;
+	myApp = myApp
+			|| (function() {
+				var pleaseWaitDiv = $('<div class="modal hide" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false"><div class="modal-header"><h1>Processing...</h1></div><div class="modal-body"><div class="progress progress-striped active"><div class="bar" style="width: 100%;"></div></div></div></div>');
+				return {
+					showPleaseWait : function() {
+						pleaseWaitDiv.modal();
+					},
+					hidePleaseWait : function() {
+						pleaseWaitDiv.modal('hide');
+					},
+
+				};
+			})();
+
+	
 		function init_map() {
 			var var_location = new google.maps.LatLng(${location.latitude}, ${location.longitude});
 			var var_mapoptions = {
@@ -176,7 +192,7 @@
             data: lineData,
             color: "#3c8dbc"
         };
-        $.plot("#line-chart", [line_data1], {
+        var lineChart = $.plot("#line-chart", [line_data1], {
             grid: {
                 hoverable: true,
                 borderColor: "#f3f3f3",
@@ -238,12 +254,15 @@
 		            },
 		            data: JSON.stringify(json),
 		            success : function(data) {
-		            	var testData = [];
-		            	$.each(data, function(outerKey, outerValue){
-		            		var line = {label : String(outerKey),value :  outerValue}
-		            		testData.push(line);
-		            	});
-		            	donut.setData(testData);
+		            	var lineChartData = [];
+		            	for (var i = 0; i < data.devices.length; i++) {
+		            		lineChartData.push([data.devices[i].lastDataDate, data.devices[i].batteryLevel]);
+		            	}
+		            	var plotData = lineChart.getData();
+		            	plotData[0].data = lineChartData;
+		            	lineChart.setData(plotData);
+		            	lineChart.setupGrid();
+		            	lineChart.draw();
 						myApp.hidePleaseWait();
 		            },
 		            error: function(result) {
@@ -257,7 +276,9 @@
 			$('#linetime').daterangepicker({
 				timePicker : true,
 				timePickerIncrement : 30,
-				format : 'MM/DD/YYYY h:mm A'
+				format : 'MM/DD/YYYY h:mm A',
+				startDate: '${defaultStartTime}',
+			    endDate: '${defaultEndTime}'
 			}, lineChartCallBack);
 			$("#linetime").val("${defaultStartTime} - ${defaultEndTime}");
 

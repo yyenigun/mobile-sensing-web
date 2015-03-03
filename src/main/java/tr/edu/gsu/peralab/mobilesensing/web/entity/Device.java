@@ -70,7 +70,7 @@ public class Device implements Comparable<Device> {
 
 	@Override
 	public int compareTo(Device o) {
-		return this.compareTo(o);
+		return this.lastDataDate.compareTo(o.getLastDataDate());
 	}
 
 }

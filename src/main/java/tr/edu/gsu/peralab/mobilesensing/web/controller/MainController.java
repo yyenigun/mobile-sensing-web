@@ -138,6 +138,10 @@ public class MainController {
 		model.addAttribute("device", device);
 		model.addAttribute("location", location);
 		model.addAttribute("deviceList",deviceList);
+		model.addAttribute("defaultStartTime", new SimpleDateFormat(
+				"MM/dd/YYYY h:mm a").format(cal.getTime()));
+		model.addAttribute("defaultEndTime", new SimpleDateFormat(
+				"MM/dd/YYYY h:mm a").format(new Date()));
 		return "secured/device";
 	}
 

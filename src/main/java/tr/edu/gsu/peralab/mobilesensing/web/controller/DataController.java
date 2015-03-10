@@ -45,7 +45,8 @@ public class DataController {
 			String fileName = dataService.exportToCSV(username, tablename);
 			response.setContentType("text/csv");
 	        response.setHeader("Content-Disposition","attachment; filename=\"" + fileName +"\"");
-		    InputStream is = new FileInputStream(fileName);
+	        response.setCharacterEncoding("UTF-8");
+		    InputStream is = new FileInputStream("/tmp/" + fileName);
 		    IOUtils.copy(is, response.getOutputStream());
 	        response.flushBuffer();
 	    } catch (SQLException e) {

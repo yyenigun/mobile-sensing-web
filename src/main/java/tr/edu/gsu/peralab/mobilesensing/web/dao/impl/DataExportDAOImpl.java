@@ -31,7 +31,7 @@ public class DataExportDAOImpl extends JDBCBaseDAO implements DataExportDAO {
 		PreparedStatement statement = getConnection().prepareStatement(query);
 		ResultSet resultSet = statement.executeQuery();
 		ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
-		FileWriter writer = new FileWriter(userTable + ".csv");
+		FileWriter writer = new FileWriter("/tmp/" + userTable + ".csv");
         for(int i = 1; i <= resultSetMetaData.getColumnCount(); i++){
         	writer.append(resultSetMetaData.getColumnName(i));
         	writer.append(",");

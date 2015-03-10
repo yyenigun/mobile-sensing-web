@@ -56,6 +56,7 @@
 							<th>Yaş</th>
 							<th>Cihaz Bilgileri</th>
 							<th>Aktivite Bilgileri</th>
+							<th>Veri Aktarımı</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -67,6 +68,7 @@
 								<td>${user.age}</td>
 								<td><a href="device/${user.userName}">Cihaz</a></td>
 								<td><a href="activity/${user.userName}">Aktivite</a></td>
+								<td><a href="data/${user.userName}">Veri</a></td>
 							</tr>
 						</c:forEach>
 				</table>

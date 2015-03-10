@@ -37,6 +37,9 @@
 	<mvc:view-controller path="/secured/activityrankings"
 		view-name="/secured/activityrankings" />
 
+	<mvc:view-controller path="/secured/data"
+		view-name="/secured/data" />
+
 	<bean id="webexpressionHandler"
 		class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
 

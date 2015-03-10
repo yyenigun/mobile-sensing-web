@@ -27,6 +27,9 @@
 							<li><a
 								href="${pageContext.request.contextPath}/secured/device/${username}"><i
 									class="fa fa-angle-double-right"></i> Cihaz Bilgileri </a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/secured/data/${username}"><i
+									class="fa fa-angle-double-right"></i> Veri Aktarımı </a></li>
 						</sec:authorize>
 						<sec:authorize
 							access="hasRole('ROLE_ADMIN')">

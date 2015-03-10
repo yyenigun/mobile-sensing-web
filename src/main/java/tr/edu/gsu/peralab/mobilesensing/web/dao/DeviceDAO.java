@@ -16,7 +16,6 @@
 
 package tr.edu.gsu.peralab.mobilesensing.web.dao;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import tr.edu.gsu.peralab.mobilesensing.web.entity.Device;
